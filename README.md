@@ -1,4 +1,4 @@
-teamtns3
+teamtdim3
 ========
 
-Team T Level 3 NS3 Project
+Team T Level 3 DIM3 Project
