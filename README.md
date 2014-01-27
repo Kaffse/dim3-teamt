@@ -1,6 +1,5 @@
-Team T Distributed Information Management 3 Project
-Collaborative Requirement Tracker
-=====
+#Team T Distributed Information Management 3 Project
+##Collaborative Requirement Tracker
 
 Tasked to create a collaborative system to sort, prioritise and organise requirements ala Trello. To be made in Django.
 
