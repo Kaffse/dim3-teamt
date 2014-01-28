@@ -1,0 +1,11 @@
+Hey Nerds,
+
+Using virtual enviroments is easy!
+
+1. cd into dim3
+2. source venv/bin/activate
+3. You can now pip install <package> and such without requiring sudo
+4. You are now using python locally and can do cool things.
+5. Make sure you use "deactivate" before you leave the directory
+
+Done!
