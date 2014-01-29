@@ -15,21 +15,25 @@ def index(request):
 	return render_to_response('webapp/index.htm',cont, context)
 	
 def create(request):
-	return HttpResponse("create task <a href='/'>home</a>")
+	context = RequestContext(request)
+	return render_to_response('webapp/create.htm',cont, context)
 	
 def plist(request):
 	context = RequestContext(request)
 	return render_to_response('webapp/plist.htm',cont, context)
 	
 def collaborate(request):
-	return HttpResponse("collab <a href='/'>home</a>")
+	context = RequestContext(request)
+	return render_to_response('webapp/collaborate.htm',cont, context)
 	
 def about(request):
 	context = RequestContext(request)
 	return render_to_response('webapp/about.htm',cont, context)
 	
 def register(request):
-	return HttpResponse("register form here <a href='/'>home</a>")
+	context = RequestContext(request)
+	return render_to_response('webapp/register.htm',cont, context)
 
 def login(request):
-	return HttpResponse("login here <a href='/'>home</a>")
+	context = RequestContext(request)
+	return render_to_response('webapp/login.htm',cont, context)

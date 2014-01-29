@@ -13,16 +13,19 @@
 		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 		
 		<script>
+		
 		$(function() {
 		$( "#sortable" ).sortable();
-		$( "#sortable" ).disableSelection();
+		$( "#s1" ).sortable();
+		$( "#s2" ).sortable();
+		$( "#s3" ).sortable();
+		$( "li" ).disableSelection();
 		});
 		</script>
 		
 		<style>
-  #sortable,s1 { list-style-type: none; margin: 0; padding: 0; width: 200px; }
-  #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 15px; height: 15px; }
-  #sortable li span { position: absolute; margin-left: -1.3em; }
+  #sortable,#s1,#s2,#s3 { list-style-type: none; margin: 0; padding: 0; width: 200px; }
+  #sortable li,#s1 li,#s2 li,#s3 li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 15px; height: 15px; }
   </style>
 		 
         <title>{{title}}</title>
@@ -39,7 +42,7 @@
 		<div id="button"><a href='/'>Home</a></div>
 		<div id="button"><a href='/create'>Create project</a></div>
 		<div id="button"><a href='/collaborate'>Collaborate</a></div>
-		<div id="button"><a href='/plist'>/Project list</a></div>
+		<div id="button"><a href='/plist'>~/Project list</a></div>
 		<div id="button"><a href='/about'>About</a></div>
 		
 		<div id="button" style="float:right;"><a href='/register'>Register</a></div>
@@ -65,8 +68,29 @@
 		<li><div id="task">Itemasd asd asd as d  1</div></li>
 		</ul>
 		</div>
+		
 		<div id="project">
-		<ul id="sortable">
+		<ul id="s1">
+		<li><div id="task">Project 1</div></li>
+		<li><div id="task">Itds aas das em 1</div></li>
+		<li><div id="task">Item 1</div></li>
+		<li><div id="task">Iteadas dasd ada dsam 1</div></li>
+		<li><div id="task">Itemasd asd asd as d  1</div></li>
+		</ul>
+		</div>
+		
+		<div id="project">
+		<ul id="s2">
+		<li><div id="task">Project 1</div></li>
+		<li><div id="task">Itds aas das em 1</div></li>
+		<li><div id="task">Item 1</div></li>
+		<li><div id="task">Iteadas dasd ada dsam 1</div></li>
+		<li><div id="task">Itemasd asd asd as d  1</div></li>
+		</ul>
+		</div>
+		
+		<div id="project">
+		<ul id="s3">
 		<li><div id="task">Project 1</div></li>
 		<li><div id="task">Itds aas das em 1</div></li>
 		<li><div id="task">Item 1</div></li>
