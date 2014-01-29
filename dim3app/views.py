@@ -18,7 +18,8 @@ def create(request):
 	return HttpResponse("create task <a href='/'>home</a>")
 	
 def plist(request):
-	return HttpResponse("project list <a href='/'>home</a>")
+	context = RequestContext(request)
+	return render_to_response('webapp/plist.htm',cont, context)
 	
 def collaborate(request):
 	return HttpResponse("collab <a href='/'>home</a>")

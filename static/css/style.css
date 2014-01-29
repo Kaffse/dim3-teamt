@@ -33,6 +33,25 @@ background-color: #0099CC;
 text-align:center;
 }
 
+#task {
+display:block;
+position: absolute;
+float:left;
+border:1px solid #0f66a1;
+border-radius:5px;
+padding:5px;
+margin:2px;
+background-color: #0099CC;
+text-align:center;
+}
+
+#project{
+float:left;
+width:150px;
+display:inline;
+
+}
+
 #box {
 font-family: Arial;
 color: #1a3142;

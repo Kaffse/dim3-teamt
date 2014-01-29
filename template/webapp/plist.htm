@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+{% load static %} 
+
+	<!--header -->
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		 <link rel="stylesheet" href="{% static "css/style.css" %}" />
+		 
+		 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+		<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+		
+		<script>
+		$(function() {
+		$( "#sortable" ).sortable();
+		$( "#sortable" ).disableSelection();
+		});
+		</script>
+		
+		<style>
+  #sortable { list-style-type: none; margin: 0; padding: 0; width: 200px; }
+  #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 15px; height: 15px; }
+  #sortable li span { position: absolute; margin-left: -1.3em; }
+  </style>
+		 
+        <title>{{title}}</title>
+    </head>
+
+    <body>
+	
+	<div align="center">
+	<h1>{{header}}</h1>
+	</div>
+	
+	<!--body -->
+	<div id="box">
+		<div id="button"><a href='/'>Home</a></div>
+		<div id="button"><a href='/create'>Create project</a></div>
+		<div id="button"><a href='/collaborate'>Collaborate</a></div>
+		<div id="button"><a href='/plist'>/Project list</a></div>
+		<div id="button"><a href='/about'>About</a></div>
+		
+		<div id="button" style="float:right;"><a href='/register'>Register</a></div>
+		<div id="button" style="float:right;"><a href='/login'>Login</a></div>
+		
+		<!--header -->
+	
+		<!-- this code includes the header template <?php include 'header.php'; ?> -->
+		
+		<br>
+		<br>
+		<p>This is box one.</p>
+		
+		<div id="content">
+		<p>This is box three.</p>
+		<p>
+		
+		<ul id="sortable">
+		<li><div id="task">Item 1</div></li>
+		<li><div id="task">Itds aas das em 1</div></li>
+		<li><div id="task">Item 1</div></li>
+		<li><div id="task">Iteadas dasd ada dsam 1</div></li>
+		<li><div id="task">Itemasd asd asd as d  1</div></li>
+		</ul>
+		
+		
+		</p>
+		
+		</div>
+		<br>
+		
+		
+		<!--footer -->
+		<div id="bottom">
+		<p><b>{{title}}</b>
+		<br>
+		<i>{{header}}</i>
+		<br><br>
+		{{description}}
+		<br>
+		{{members}}
+		</p>
+		<!--footer -->
+		
+		<!-- this code includes the footer template commented on purpose <?php include 'footer.php'; ?> -->
+	
+	</div>
+	<!--body -->
+    </body>
+
+</html>
