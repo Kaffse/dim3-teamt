@@ -40,15 +40,20 @@ float:left;
 border:1px solid #0f66a1;
 border-radius:5px;
 padding:5px;
-margin:2px;
-background-color: #0099CC;
+margin-top:-5px;
+margin-left:-25px;
+background-color: #0099FF;
 text-align:center;
 }
 
 #project{
 float:left;
-width:150px;
-display:inline;
+border:1px solid #0f66a1;
+border-radius:5px;
+padding: 10px;
+margin-right:5px;
+width:200px;
+background-color: #0099CC;;
 
 }
 
@@ -87,6 +92,7 @@ margin:0 auto;
 }
 
 #content {
+height:250px;
 font-family: Arial;
 color: #1a3142;
 font-size:15px;
