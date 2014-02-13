@@ -11,23 +11,23 @@ Team Members: Alastair Weir (110682w), Keir Smith, Peter Yordanov, Gordon Adam, 
 
 Installation instructions (UNIX)
 
-Clone this repo
-Install mysql mysql-server mysql-python
-pip install south
-mysql -u root -p
-CREATE DATABASE dim3;
-CREATE USER 'root'@'localhost' IDENTIFIED BY 'dim3';
-GRANT ALL PRIVILEGES ON mdrsDatabase.* TO 'mdrs'@'localhost';
-quit
-python manage.py syncdb
-python manage.py runserver
+1. Clone this repo
+2. Install mysql mysql-server mysql-python
+3. pip install south
+4. mysql -u root -p
+5. CREATE DATABASE dim3;
+6. CREATE USER 'root'@'localhost' IDENTIFIED BY 'dim3';
+7. GRANT ALL PRIVILEGES ON mdrsDatabase.* TO 'mdrs'@'localhost';
+8. quit
+9. python manage.py syncdb
+10. python manage.py runserver
 
 Installation instructions (Windows)
 
-Clone this repo
-Install mysql mysql-server mysql-python
-pip install south
-Set up Xampp  - Apache + MySQL (user root no password on localhost)
-Start services > Create dim3 database in phpMyAdmin
-python manage.py syncdb
-python manage.py runserver
+1. Clone this repo
+2.Install mysql mysql-server mysql-python
+3. pip install south
+4. Set up Xampp  - Apache + MySQL (user root no password on localhost)
+5. Start services > Create dim3 database in phpMyAdmin
+6. python manage.py syncdb
+7. python manage.py runserver
