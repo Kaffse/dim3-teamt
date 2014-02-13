@@ -25,7 +25,7 @@ Installation instructions (UNIX)
 Installation instructions (Windows)
 
 1. Clone this repo
-2.Install mysql mysql-server mysql-python
+2. Install mysql mysql-server mysql-python
 3. pip install south
 4. Set up Xampp  - Apache + MySQL (user root no password on localhost)
 5. Start services > Create dim3 database in phpMyAdmin
