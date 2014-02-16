@@ -6,7 +6,7 @@ Tasked to create a collaborative system to sort, prioritise and organise require
 
 Link to project's presentation:https://docs.google.com/presentation/d/17wDcwCy9t_2nMox4KuVBKrv8DJ6ueVUaXi3OrerJYH4/edit?usp=sharing
 
-Team Members: Alastair Weir (110682w), Keir Smith, Peter Yordanov, Gordon Adam, Georgi Dimitrov
+Team Members: Alastair Weir (110682w), Keir Smith, Peter Yordanov (1103620y), Gordon Adam, Georgi Dimitrov
 
 
 Installation instructions (UNIX)
