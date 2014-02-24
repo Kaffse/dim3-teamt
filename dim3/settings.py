@@ -30,10 +30,6 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
-)
-
 # Application definition
 
 INSTALLED_APPS = (
@@ -87,7 +83,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-gb'
 
 TIME_ZONE = 'UTC'
 

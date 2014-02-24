@@ -6,16 +6,12 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'mdrs.views.home', name='home'),
-    # url(r'^mdrs/', include('mdrs.foo.urls')),
-
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^webapp/', include('webapp.urls')),
+    url(r'^aggressiveBackpack/', include('webapp.urls')),
 )
 
 #if settings.DEBUG:
