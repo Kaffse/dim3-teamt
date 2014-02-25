@@ -90,3 +90,9 @@ def login(request):
 	else:
 	
 		return render_to_response('webapp/login.htm',cont, context)
+	
+def user_logout(request)
+
+	logout(request)
+	
+	return HttpResponseRedirect('/')

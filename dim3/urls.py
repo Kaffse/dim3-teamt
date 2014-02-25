@@ -17,6 +17,7 @@ urlpatterns = patterns('',
 	url(r'^register/', views.register, name='register'),
 	url(r'^login/', views.login, name='login'),
 	url(r'^collaborate/', views.collaborate, name='collaborate'),
+	url(r'^logout/$', views.user_logout, name='logout'),
 )
 
 if settings.DEBUG:
