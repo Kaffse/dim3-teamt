@@ -1,69 +1,72 @@
-
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+    <title>Aggressive Backpack</title>
 
-    <title>Starter Template for Bootstrap</title>
+    <link href="{% static "css/bootstrap/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "css/bootstrap/bootstrap-theme.min.css" %}" rel="stylesheet">
+    <link href="{% static "css/bootstrap-fluid-adj.css" %}" rel="stylesheet">
 
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+</head>
+    <body>
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class=​"sr-only">​Toggle navigation​</span>
+                    ​<span class=​"icon-bar">​</span>​
+                    <span class=​"icon-bar">​</span>​
+                    <span class=​"icon-bar">​</span>​
+                </button>
+                <a class="navbar-brand" href="{{index}}">Aggressive Backpack</a>
+            </div>
+            <div class="navbat-collapse collapse" style="height:1px;">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="{{index}}">Home</a>
+                    </li>
+                    <li>
+                        <a href="{{dashboard}}">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="{{settings}}">Settings</a>
+                    </li>
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Project name</a>
+                    {% if user.is_authenticated %}
+                    <a href="{{logout}}">Sign out</a><br />
+                    {% else %}
+                    <a href="{{register}}">Register</a><br />
+                    <a href="{{login}}">Login</a><br />
+                    {% endif %}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="{{user}}">
+                            {% if user.is_authenticated %}
+                            {{user.username}}
+                            {% else %}
+                            User
+                            {% endif %}
+                        </a>
+                        <! User's profile image here>
+                    </li>
+                    <li>
+                        <div><button class="btn" href="{{new_project}}"><i class="icon-plus-sign"></i> New Project</button></div>
+                    </li>
+                </ul>
+            </div>
+          </div>
         </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
 
-    <div class="container">
+        <div class="container">
+        {%block body_block %}This is the default content of body-block{% endblock %}
+        </div>
+        <script src="{% static "js/jquery-2.1.0.min.js" %}"></script>
+        <script src="{% static "js/bootstrap/bootstrap.min.js" %}"></script>
 
-      <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-      </div>
-
-    </div><!-- /.container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<!-- Latest compiled and minified JavaScript -->
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>  </body>
+    </body>
 </html>
