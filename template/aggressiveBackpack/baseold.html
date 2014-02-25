@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aggressive Backpack</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+    <link href="static/css/awesome-font/font-awesome.min.css">
+</head>
+    <body>
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        ::before
+        <div class="container">
+            ::before
+            <div class="navbar-header">
+                ::before
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class=​"sr-only">​Toggle navigation​</span>
+                    ​<span class=​"icon-bar">​</span>​
+                    <span class=​"icon-bar">​</span>​
+                    <span class=​"icon-bar">​</span>​
+                </button>
+                <a class="navbar-brand" href="{{index}}">Aggressive Backpack</a>
+                ::after  ​
+            </div>
+            <div class="navbat-collapse collapse" style="height:1px;">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="{{index}}">Home</a>
+                    </li>
+                    <li>
+                        <a href="{{dashboard}}">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="{{settings}}">Settings</a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+                    <a href="{{logout}}">Sign out</a><br />
+                    {% else %}
+                    <a href="{{register}}">Register</a><br />
+                    <a href="{{login}}">Login</a><br />
+                    {% endif %}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="{{user}}">
+                            {% if user.is_authenticated %}
+                            {{user.username}}
+                            {% else %}
+                            User
+                            {% endif %}
+                        </a>
+                        <! User's profile image here>
+                    </li>
+                    <li>
+                        <div><button class="btn" href="{{new_project}}"><i class="icon-plus-sign"></i> New Project</button></div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        {%block body_block %}This is the default content of body-block{% endblock %}
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    </body>
+</html>
