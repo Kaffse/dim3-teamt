@@ -14,5 +14,5 @@ urlpatterns = patterns('',
     url(r'^login/', views.login, name='login'),
 	url(r'^logout/', views.logout, name='logout'),
     url(r'^register/', views.register, name='register'),
-    url(r'^new-project/', views.new_project, name='new-project'),
+    url(r'^new_project/', views.new_project, name='new_project'),
 )
