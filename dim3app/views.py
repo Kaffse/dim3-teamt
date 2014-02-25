@@ -12,7 +12,7 @@ cont = {'header':"Collaborative Requirement Tracker Team T",
 
 def index(request):
 	context = RequestContext(request)
-	return render_to_response('webapp/index.php',cont, context)
+	return render_to_response('webapp/index.htm',cont, context)
 	
 def create(request):
 	context = RequestContext(request)

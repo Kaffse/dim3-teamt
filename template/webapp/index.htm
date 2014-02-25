@@ -1,39 +1,12 @@
-<!DOCTYPE html>
-<html>
+{% extends "webapp/template.htm" %}
 
-{% load static %} 
 
-	<!--header -->
-    <head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		 <link rel="stylesheet" href="{% static "css/style.css" %}" />
-        <title>{{title}}</title>
-    </head>
+{% block content %}
 
-    <body>
-	
-	<div align="center">
-	<h1>{{header}}</h1>
-	</div>
-	
-	<!--body -->
-	<div id="box">
-		<div id="button"><a href='/'>~/Home</a></div>
-		<div id="button"><a href='/create'>Create project</a></div>
-		<div id="button"><a href='/collaborate'>Collaborate</a></div>
-		<div id="button"><a href='/plist'>Project list</a></div>
-		<div id="button"><a href='/about'>About</a></div>
-		
-		<div id="button" style="float:right;"><a href='/register'>Register</a></div>
-		<div id="button" style="float:right;"><a href='/login'>Login</a></div>
-		
+		<p>This is box two.</p>
 		<!--header -->
 	
-		<!-- this code includes the header template <?php include 'header.php'; ?> -->
-		
-		<br>
-		<br>
-		<p>This is box one.</p>
+		<div id="half">
 		
 		<div id="top">
 		<p>This is box two.</p>
@@ -42,7 +15,6 @@
 		lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolsdfsdfsor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet 
 		lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet </p>
 		</div>
-		<br>
 		
 		<div id="content">
 		<p>This is box three.</p>
@@ -55,25 +27,26 @@
 		lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet 
 		lorem ipsum dolor sit amet lorem ipsud asd asdm dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet </p>
 		</div>
-		<br>
 		
+		</div>
 		
-		<!--footer -->
-		<div id="bottom">
-		<p><b>{{title}}</b>
-		<br>
-		<i>{{header}}</i>
-		<br><br>
-		{{description}}
-		<br>
-		{{members}}
+		<div id="quart">
+		
+		<div id="top">
+		<p>This is box two.</p>
+		<p>lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet 
+		lorem ipsum dolor sit amet lorem ipfsdfsdfsum dolor sit amet lorem fipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet 
 		</p>
-		<!--footer -->
+		</div>
 		
-		<!-- this code includes the footer template commented on purpose <?php include 'footer.php'; ?> -->
-	
-	</div>
-	<!--body -->
-    </body>
+		<div id="content">
+		<p>This is box three.</p>
+		<p>lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet 
+		lorem ipsum dolor sit amet lorem ipsum dolor sit amet loreasdasdm ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet 
+		lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet 
+		lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorasdasem ipsum dolor sit amet lorem ipsum dolor sit amet </p>
+		</div>
+		
+		</div>
 
-</html>
+{% endblock %}

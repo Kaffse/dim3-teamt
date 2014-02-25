@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html>
+{% extends "webapp/template.htm" %}
 
-{% load static %} 
+{% block page %} Project List {% endblock %}
 
-	<!--header -->
-    <head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		 <link rel="stylesheet" href="{% static "css/style.css" %}" />
+{% block head %} 
+
 		 
 		 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 		<script src="//code.jquery.com/jquery-1.9.1.js"></script>
@@ -22,41 +19,12 @@
 		$( "li" ).disableSelection();
 		});
 		</script>
-		
-		<style>
-  #sortable,#s1,#s2,#s3 { list-style-type: none; margin: 0; padding: 0; width: 200px; }
-  #sortable li,#s1 li,#s2 li,#s3 li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 15px; height: 15px; }
-  </style>
-		 
-        <title>{{title}}</title>
-    </head>
 
-    <body>
-	
-	<div align="center">
-	<h1>{{header}}</h1>
-	</div>
-	
-	<!--body -->
-	<div id="box">
-		<div id="button"><a href='/'>Home</a></div>
-		<div id="button"><a href='/create'>Create project</a></div>
-		<div id="button"><a href='/collaborate'>Collaborate</a></div>
-		<div id="button"><a href='/plist'>~/Project list</a></div>
-		<div id="button"><a href='/about'>About</a></div>
-		
-		<div id="button" style="float:right;"><a href='/register'>Register</a></div>
-		<div id="button" style="float:right;"><a href='/login'>Login</a></div>
-		
-		<!--header -->
-	
-		<!-- this code includes the header template <?php include 'header.php'; ?> -->
-		
-		<br>
-		<br>
-		<p>This is box one.</p>
-		
-		<div id="content">
+{% endblock %}
+
+{% block content %}
+
+	<div id="content" style="height:250px;">
 		<p>This is box three.</p>
 		<p>
 		<div id="project">
@@ -101,26 +69,7 @@
 		
 		</p>
 		
-		</div>
-		<br>
-		
-		
-		<!--footer -->
-		<div id="bottom">
-		<p><b>{{title}}</b>
-		<br>
-		<i>{{header}}</i>
-		<br><br>
-		{{description}}
-		<br>
-		{{members}}
-		</p>
-		<!--footer -->
-		
-		<!-- this code includes the footer template commented on purpose <?php include 'footer.php'; ?> -->
-	
 	</div>
-	<!--body -->
-    </body>
 
-</html>
+{% endblock %}
+

@@ -1,62 +1,10 @@
-<!DOCTYPE html>
-<html>
+{% extends "webapp/template.htm" %}
 
-{% load static %} 
 
-	<!--header -->
-    <head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		 <link rel="stylesheet" href="{% static "css/style.css" %}" />
-        <title>{{title}}</title>
-    </head>
-
-    <body>
-	
-	<div align="center">
-	<h1>{{header}}</h1>
-	</div>
-	
-	<!--body -->
-	<div id="box">
-		<div id="button"><a href='/'>Home</a></div>
-		<div id="button"><a href='/create'>Create project</a></div>
-		<div id="button"><a href='/collaborate'>~/Collaborate</a></div>
-		<div id="button"><a href='/plist'>Project list</a></div>
-		<div id="button"><a href='/about'>About</a></div>
-		
-		<div id="button" style="float:right;"><a href='/register'>Register</a></div>
-		<div id="button" style="float:right;"><a href='/login'>Login</a></div>
-		
-		<!--header -->
-	
-		<!-- this code includes the header template <?php include 'header.php'; ?> -->
-		
-		<br>
-		<br>
-		<p>This is box one.</p>
-		
+{% block content %}
 		<div id="content">
-		Collaborate and contribute to existing projects.
+		<p>Collab and contrib to existing projects </p>
 		</div>
-		<br>
-		
-		
-		<!--footer -->
-		<div id="bottom">
-		<p><b>{{title}}</b>
-		<br>
-		<i>{{header}}</i>
-		<br><br>
-		{{description}}
-		<br>
-		{{members}}
-		</p>
-		<!--footer -->
-		
-		<!-- this code includes the footer template commented on purpose <?php include 'footer.php'; ?> -->
-	
-	</div>
-	<!--body -->
-    </body>
+{% endblock %}
 
-</html>
+{% block page %} Collaborate {% endblock %}
