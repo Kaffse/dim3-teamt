@@ -1,6 +1,7 @@
 #pyordanov beta models
 
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Project(models.Model):
@@ -25,18 +26,20 @@ class Project(models.Model):
 	def __unicode__(self):
 		return self.name
 
-class User(models.Model):
+class UserAcc(models.Model):
 
-	id = models.AutoField(primary_key=True)
+	user = models.OneToOneField(User)
 	name = models.CharField(max_length=50)
 	email = models.CharField(max_length=50)
+	website = models.URLField(blank=True)
+	picture = models.ImageField(upload_to='static/data', blank=True)
 	project = models.ManyToManyField(Project, related_name='project+')
 	
 	# can be removed/changed to a list field to store insterests as tags
 	interests = models.CharField(max_length=100)
 	
 	def __unicode__(self):
-		return self.name
+		return self.user.username
 
 
 

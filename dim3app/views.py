@@ -2,11 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
+from dim3app.forms import UserForm, UserAccForm
 
 cont = {'header':"Collaborative Requirement Tracker Team T",
 		'title':"Team T Distributed Information Management 3 Project",
 		'description':"Tasked to create a collaborative system to sort, prioritise and organise requirements ala Trello. To be made in Django.",
-		'members': "Team Members: Alastair Weir (110682w), Keir Smith, Peter Yordanov, Gordon Adam, Georgi Dimitrov"
+		'members': "Team Members: Alastair Weir (110682w), Keir Smith, Peter Yordanov, Gordon Adam, Georgi Dimitrov",
 		}
 
 
@@ -31,9 +32,61 @@ def about(request):
 	return render_to_response('webapp/about.htm',cont, context)
 	
 def register(request):
+	
 	context = RequestContext(request)
-	return render_to_response('webapp/register.htm',cont, context)
+	registered = False
+	
+	
+	if request.method == 'POST':
+		u_form = UserForm(data=request.POST)
+		acc_form = UserAccForm(data=request.POST)
+		
+		if u_form.is_valid() and acc_form.is_valid():
+			user = u_form.save()
+			
+			user.set_password(user.password)
+			user.save()
+			account = acc_form.save(comit=False)
+			account.user = user
+			
+			if 'picture' in request.FILES:
+				account.picture = request.FILES['picture']
+			
+			profile.save()
+			registered = True
+	
+		else:
+			print u_form.errors, acc_form.errors
+			
+	else:
+		u_form = UserForm()
+		acc_form = UserAccForm()
+	
+	return render_to_response(
+		'webapp/register.htm',
+		{'u_form': u_form, 'acc_form': acc_form, 'registered': registered},
+		context)
 
 def login(request):
+
 	context = RequestContext(request)
-	return render_to_response('webapp/login.htm',cont, context)
+	
+	if request.method == 'POST':
+		username = request.POST['username']
+		password = request.POST['password']
+		
+		user = authenticate(username=username,password=password)
+		
+		if user is not None:
+			if user.is_active:
+				login(request,user)
+				return HttpResponseRedirect('/plist/')
+			
+			else:
+				return HttpResponse("Account error.")
+		else:
+			print "Invalid username/password: {0}, {1}".format(username, password)
+		
+	else:
+	
+		return render_to_response('webapp/login.htm',cont, context)

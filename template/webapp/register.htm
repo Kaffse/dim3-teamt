@@ -3,7 +3,28 @@
 
 {% block content %}
 		<div id="content">
-		<p>Login here. </p>
+		<p>Register here. </p>
+		
+			{% if registered %}
+			<strong>Thank you for registering!</strong>
+			<a href="/">Return to the homepage.</a><br />
+			{% else %}
+			<strong>Register here!</strong><br />
+
+			<form id="u_form" method="post" action="/register/"
+					enctype="multipart/form-data">
+
+				{% csrf_token %}
+
+
+				{{ u_form.as_p }}
+				{{ acc_form.as_p }}
+
+				<!-- Provide a button to click to submit the form. -->
+				<input type="submit" name="submit" value="Register" />
+			</form>
+			{% endif %}
+		
 		</div>
 {% endblock %}
 
