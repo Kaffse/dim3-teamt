@@ -27,35 +27,35 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="{{index}}">Home</a>
+                        <a href="/aggressiveBackpack/index/">Home</a>
                     </li>
                     <li>
-                        <a href="{{dashboard}}">Dashboard</a>
+                        <a href="/aggressiveBackpack/dashboard/">Dashboard</a>
                     </li>
                     <li>
-                        <a href="{{settings}}">Settings</a>
+                        <a href="/aggressiveBackpack/settings/">Settings</a>
                     </li>
 
                     {% if user.is_authenticated %}
 
                     <li>
-                    <a href="{{logout}}">Sign out</a>
+                    <a href="/aggressiveBackpack/logout/">Sign out</a>
                     </li>
 
                     {% else %}
 
                     <li>
-                    <a href="{{register}}">Register</a>
+                    <a href="/aggressiveBackpack/register/">Register</a>
                     </li>
                     <li>
-                    <a href="{{login}}">Login</a>
+                    <a href="/aggressiveBackpack/login/">Login</a>
                     </li>
                     {% endif %}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <! User's profile image here>
-                        <a href="{{user}}">
+                        <a href="/aggressiveBackpack/user/">
                             {% if user.is_authenticated %}
                             {{user.username}}
                             {% else %}
@@ -65,7 +65,7 @@
 
                     </li>
                     <li>
-                        <button class="btn" href="{{new_project}}"><i class="icon-plus-sign"></i> New Project</button>
+                        <button class="btn" href="/aggressiveBackpack/new_project/"><i class="icon-plus-sign"></i> New Project</button>
                     </li>
                 </ul>
             </div>
