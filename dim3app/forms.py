@@ -14,4 +14,4 @@ class UserForm(forms.ModelForm):
 class UserAccForm(forms.ModelForm):
 	class Meta:
 		model = UserAcc
-		fields = ('picture')
+		fields = ('picture',)
