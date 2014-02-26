@@ -76,15 +76,12 @@ def login(request):
 		username = request.POST['username']
 		password = request.POST['password']
 
-        print "lolyes"
 		user = authenticate(username=username,password=password)
-        print "lolnope"
 
 		if user is not None:
 			if user.is_active:
 				login(request)
-                print "Login Success"
-				return HttpResponseRedirect('/')
+				return HttpResponseRedirect('webapp/index.htm')
 
 			else:
 				return HttpResponse("Account error.")
@@ -93,7 +90,7 @@ def login(request):
 
 	else:
 
-		return render_to_response('login.html',cont, context)
+		return render_to_response('webapp/login.htm',cont, context)
 
 def user_logout(request):
 
