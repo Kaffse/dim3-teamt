@@ -17,7 +17,7 @@ Installation instructions (UNIX)
 4. mysql -u root -p
 5. CREATE DATABASE dim3;
 6. CREATE USER 'root'@'localhost' IDENTIFIED BY 'dim3';
-7. GRANT ALL PRIVILEGES ON mdrsDatabase.* TO 'mdrs'@'localhost';
+7. GRANT ALL PRIVILEGES ON dim3.* TO 'dim3'@'localhost';
 8. quit
 9. python manage.py syncdb
 10. python manage.py runserver
