@@ -40,6 +40,22 @@ class UserAcc(models.Model):
 		return self.user.username
 
 
+class Friendship(models.Model):
+
+    date = models.DateTimeField(auto_now_add=True, editable=False)
+    initiator = models.ForeignKey(User, related_name="friendship_initiator")
+    friend = models.ForeignKey(User, related_name="friend_set")
+
+
+class Tag(models.Model):
+	
+	creation_time  = models.DateTimeField(auto_now_add=False)
+	word        = models.CharField(max_length=35)
+	slug        = models.CharField(max_length=250)
+
+	def __unicode__(self):
+		return self.word
+
 
 class Task(models.Model):
 
@@ -91,8 +107,10 @@ class Task(models.Model):
 	assignee = models.ManyToManyField(User, related_name='user+')
 	milestone = models.CharField(max_length = 30, default='prototype')
 	deadline = models.DateTimeField()
+	tags = models.ManyToManyField(Tag,related_name='tasks')
 
 	project = models.ForeignKey(Project)
 
 	def __unicode__(self):
 		return self.name
+
