@@ -43,8 +43,8 @@ class UserAcc(models.Model):
 class Friendship(models.Model):
 
     date = models.DateTimeField(auto_now_add=True, editable=False)
-    initiator = models.ForeignKey(User, related_name="friendship_initiator")
-    friend = models.ForeignKey(User, related_name="friend_set")
+    initiator = models.ForeignKey(UserAcc, related_name="friendship_initiator")
+    friend = models.ForeignKey(UserAcc, related_name="friend_set")
 
 
 class Tag(models.Model):
@@ -104,7 +104,7 @@ class Task(models.Model):
 	)
 
 	progress = models.IntegerField(choices=PROGRESS_CHOICES, default=ZER)
-	assignee = models.ManyToManyField(User, related_name='user+')
+	assignee = models.ManyToManyField(UserAcc, related_name='user+')
 	milestone = models.CharField(max_length = 30, default='prototype')
 	deadline = models.DateTimeField()
 	tags = models.ManyToManyField(Tag,related_name='tasks')
