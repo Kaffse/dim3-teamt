@@ -161,7 +161,6 @@ def populate():
 if __name__ == '__main__':
 
 	print "Starting dim3 population script..."
-	sys.path.append(' /Users/Sreek/django_demo/godjango/bookings')
 	os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dim3.settings')
 	from dim3app.models import Project, UserAcc, Task, Tag, Friendship
 	populate()
