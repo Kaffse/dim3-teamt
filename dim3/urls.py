@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^aggressiveBackpack/', include('aggressiveBackpack.urls')),
+    url('^markdown/', include('django_markdown.urls')),
 )
 
 #if settings.DEBUG:

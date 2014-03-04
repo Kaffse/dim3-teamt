@@ -41,6 +41,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 	'aggressiveBackpack',
     'south',
+    'django_markdown',
+    'keyboard_shortcuts',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -148,3 +150,13 @@ LOGGING = {
         },
     }
 }
+
+# START keyboard_shortcuts settings #
+HOTKEYS = [
+            {'keys': 'g + h',  # go home
+            'link': '/'},
+            {'keys': 'ctrl + n',  #make a new project
+            'link': '/new_project/'},
+        ]
+SPECIAL_DISABLED = True
+# END keyboard_shortcuts settings #
