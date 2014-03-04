@@ -1,0 +1,42 @@
+{% extends 'aggressiveBackpack/base.html' %}
+
+{% block title %}Login - AB{% endblock %}
+
+        {% block body_block %}
+        <div class="hero-unit">
+            <h1>Login to Aggressive Backpack</h1>
+        </div>
+        </br>
+        <!-- Help from the template example page. bootswatch.com/superhero -->
+        <div class="col-lg-8">
+        <div class="well">
+            <form class="form-horizontal" id="register_form" method="post" action="/aggressiveBackpack/register">
+              <fieldset>
+                    <!-- Username -->
+                    <div class="form-group">
+                      <label for="inputUsername" class="col-lg-2 control-label">Username</label>
+                      <div class="col-lg-10">
+                        <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+                      </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group">
+                      <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                      <div class="col-lg-10">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                      </div>
+                    </div>
+
+                    <!-- Submit button -->
+                    <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                              <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                          </div>
+              </fieldset>
+            </form>
+        </div>
+    </div>
+
+        {% endblock %}

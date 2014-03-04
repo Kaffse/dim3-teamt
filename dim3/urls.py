@@ -1,7 +1,10 @@
 from django.conf.urls import patterns, include, url
+from django.conf import settings
+
+# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
-from dim3app import views
+from aggressiveBackpack import views
 from django.conf import settings
 
 urlpatterns = patterns('',

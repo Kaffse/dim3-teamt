@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
+	('Keir Smith', 'kaffse@gmail.com'),
 )
 
 # Application definition
@@ -45,7 +46,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	'dim3app',
+	'aggressiveBackpack',
+    'south',
+    'django_markdown',
+    'keyboard_shortcuts',
 )
 
 MIDDLEWARE_CLASSES = (

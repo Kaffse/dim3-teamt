@@ -1,0 +1,71 @@
+{% extends 'aggressiveBackpack/base.html' %}
+
+{% block title %}Register - AB{% endblock %}
+
+
+{% block body_block %}
+<div class="row">
+	<div class="col-lg-8">
+		<div class="well">
+			<form class="form-horizontal" id="register_form" method="post" action="/aggressiveBackpack/register">
+			  <fieldset>
+			  	<legend>Register Now!</legend>
+					<!-- Username -->
+				    <div class="form-group">
+				      <label for="inputUsername" class="col-lg-2 control-label">Username</label>
+				      <div class="col-lg-10">
+				        <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+				      </div>
+				    </div>
+
+				    <!-- Forename -->
+				    <div class="form-group">
+				      <label for="inputForename" class="col-lg-2 control-label">Forename</label>
+				      <div class="col-lg-10">
+				        <input type="text" class="form-control" id="inputForename" placeholder="Forename">
+				      </div>
+				    </div>
+
+				    <!-- Surname -->
+				    <div class="form-group">
+				      <label for="inputSurname" class="col-lg-2 control-label">Surname</label>
+				      <div class="col-lg-10">
+				        <input type="text" class="form-control" id="inputSurname" placeholder="Surname">
+				      </div>
+				    </div>
+
+				    <!-- Email -->
+				    <div class="form-group">
+				      <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+				      <div class="col-lg-10">
+				        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+				      </div>
+				    </div>
+
+				    <!-- Password -->
+				    <div class="form-group">
+				      <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+				      <div class="col-lg-10">
+				        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+				      </div>
+				    </div>
+
+				    <!-- Submit button -->
+				    <div class="form-group">
+	                        <div class="col-lg-10 col-lg-offset-2">
+	                          <button type="submit" class="btn btn-primary">Submit</button>
+	                        </div>
+	                      </div>
+			  </fieldset>
+			</form>
+		</div>
+	</div>
+
+	<div class='col-lg-4'>
+		<div class="well">
+			<p>Hello</p>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

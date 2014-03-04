@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% load static %}
+{% load hotkeys %}
+<html lang="en">
+<head>
+    {% setup_hotkeys %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="{% static "images/favicon.png" %}">
+
+    <title>{% block title %}Aggressive Backpack{% endblock %}</title>
+
+    <link href="{% static "css/bootstrap/superhero-bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "css/bootstrap-fluid-adj.css" %}" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+</head>
+    <body>
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class=​"sr-only">​Toggle navigation​</span>
+                    ​<span class=​"icon-bar">​</span>​
+                    <span class=​"icon-bar">​</span>​
+                    <span class=​"icon-bar">​</span>​
+                </button>
+                <a class="navbar-brand" href="{{index}}">Aggressive Backpack</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="/aggressiveBackpack/"><i class="fa fa-home"></i>Home</a>
+                    </li>
+                    <li>
+                        <a href="/aggressiveBackpack/dashboard/"><i class="fa fa-tachometer"></i>  Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="/aggressiveBackpack/settings/"><i class="fa fa-cogs"></i>  Settings</a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+
+                    <li>
+                    <a href="/aggressiveBackpack/logout/"><i class="fa fa-sign-out"></i>  Sign out</a>
+                    </li>
+
+                    {% else %}
+                    <li> 
+                    <a href="/aggressiveBackpack/login/"><i class="fa fa-sign-in"></i>  Sign in</a>
+                    </li>
+                    <li>
+                    <a href="/aggressiveBackpack/register/">Register</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <! User's profile image here>
+                        <a href="/aggressiveBackpack/user/"><i class="fa fa-user"></i>  
+                            {% if user.is_authenticated %}
+                            {{user.username}}
+                            {% else %}
+                            User
+                            {% endif %}
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="/aggressiveBackpack/new_project/"><i class="fa fa-plus-circle"></i> New Project</a>
+                    </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+        {%block body_block %}This is the default content of body-block{% endblock %}
+        </div>
+        <script src="{% static "js/jquery-2.1.0.min.js" %}"></script>
+        <script src="{% static "js/bootstrap/bootstrap.min.js" %}"></script>
+
+    </body>
+</html>
