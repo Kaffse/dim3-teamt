@@ -1,14 +1,20 @@
-{% extends aggressiveBackpack/base.html %}
+{% extends 'aggressiveBackpack/base.html' %}
 
 {% block title %}Login - AB{% endblock %}
 
         {% block body_block %}
         <div class="hero-unit">
             <h1>Login to Aggressive Backpack</h1>
+        </div>
 
-            <div class="container">
-                <form class="form-signin span4" id="login_form" method="post" action="/aggressiveBackpack/login">
-                    <h2 class="form-signin-heading">Please sign in</h2>
+        <!-- Help from the template example page. bootswatch.com/superhero -->
+        <div class="col-lg-6">
+            <div class="well bs-component">
+                <form class="form-horizonal" id="login_form" method="post" action="/aggressiveBackpack/login">
+                    <fieldset>
+                    <! Header>
+                    <legend>Please Sign In</legend>
+
                     {% csrf_token %}
 
                     {% if bad_details %}
@@ -17,14 +23,29 @@
                     <p><strong>Your account is disabled; we can't log you in!</strong></p>
                     {% endif %}
 
-                    Username: <input type="text" class="input-block-level" placeholder="Username" name="username"
-                                     value="" size="50" />
-                    <br />
-                    Password: <input type="password" class="input-block-level" placeholder="Password" name="password"
-                                     value="" size="50" />
-                    <br />
-                    <button class="btn btn-primary" type="submit">Sign in</button>
+                        <!-- Email input -->
+                        <div class="form-group">
+                        
+                        <label for="inputEmail" class="col-lg-2 control-label">Email</label><div class="col-lg-10">
+                          <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                        </div>
+                      </div>
+
+                        <!--Password input -->
+                        <div class="form-group">
+                        <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                        <div class="col-lg-10">
+                          <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                      </div>
+                      </fieldset>
                 </form>
             </div>
-        </div>
+        </div> 
         {% endblock %}
