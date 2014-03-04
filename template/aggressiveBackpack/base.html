@@ -31,34 +31,34 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="/aggressiveBackpack/">Home</a>
+                        <a href="/aggressiveBackpack/"><i class="fa fa-home"></i>Home</a>
                     </li>
                     <li>
-                        <a href="/aggressiveBackpack/dashboard/">Dashboard</a>
+                        <a href="/aggressiveBackpack/dashboard/"><i class="fa fa-tachometer"></i>  Dashboard</a>
                     </li>
                     <li>
-                        <a href="/aggressiveBackpack/settings/">Settings</a>
+                        <a href="/aggressiveBackpack/settings/"><i class="fa fa-cogs"></i>  Settings</a>
                     </li>
 
                     {% if user.is_authenticated %}
 
                     <li>
-                    <a href="/aggressiveBackpack/logout/">Sign out</a>
+                    <a href="/aggressiveBackpack/logout/"><i class="fa fa-sign-out"></i>  Sign out</a>
                     </li>
 
                     {% else %}
+                    <li> 
+                    <a href="/aggressiveBackpack/login/"><i class="fa fa-sign-in"></i>  Sign in</a>
+                    </li>
                     <li>
                     <a href="/aggressiveBackpack/register/">Register</a>
-                    </li>
-                    <li> 
-                    <a href="/aggressiveBackpack/login/">Login</a>
                     </li>
                     {% endif %}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <! User's profile image here>
-                        <a href="/aggressiveBackpack/user/">
+                        <a href="/aggressiveBackpack/user/"><i class="fa fa-user"></i>  
                             {% if user.is_authenticated %}
                             {{user.username}}
                             {% else %}

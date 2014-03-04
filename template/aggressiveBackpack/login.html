@@ -6,46 +6,37 @@
         <div class="hero-unit">
             <h1>Login to Aggressive Backpack</h1>
         </div>
-
+        </br>
         <!-- Help from the template example page. bootswatch.com/superhero -->
-        <div class="col-lg-6">
-            <div class="well bs-component">
-                <form class="form-horizonal" id="login_form" method="post" action="/aggressiveBackpack/login">
-                    <fieldset>
-                    <! Header>
-                    <legend>Please Sign In</legend>
-
-                    {% csrf_token %}
-
-                    {% if bad_details %}
-                    <p><strong>Incorrect details!</strong></p>
-                    {% elif disabled_account %}
-                    <p><strong>Your account is disabled; we can't log you in!</strong></p>
-                    {% endif %}
-
-                        <!-- Email input -->
-                        <div class="form-group">
-                        
-                        <label for="inputEmail" class="col-lg-2 control-label">Email</label><div class="col-lg-10">
-                          <input type="text" class="form-control" id="inputEmail" placeholder="Email">
-                        </div>
+        <div class="col-lg-8">
+        <div class="well">
+            <form class="form-horizontal" id="register_form" method="post" action="/aggressiveBackpack/register">
+              <fieldset>
+                    <!-- Username -->
+                    <div class="form-group">
+                      <label for="inputUsername" class="col-lg-2 control-label">Username</label>
+                      <div class="col-lg-10">
+                        <input type="text" class="form-control" id="inputUsername" placeholder="Username">
                       </div>
+                    </div>
 
-                        <!--Password input -->
-                        <div class="form-group">
-                        <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-                        <div class="col-lg-10">
-                          <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                        </div>
+                    <!-- Password -->
+                    <div class="form-group">
+                      <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                      <div class="col-lg-10">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
                       </div>
+                    </div>
 
-                      <div class="form-group">
-                        <div class="col-lg-10 col-lg-offset-2">
-                          <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                      </div>
-                      </fieldset>
-                </form>
-            </div>
-        </div> 
+                    <!-- Submit button -->
+                    <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                              <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                          </div>
+              </fieldset>
+            </form>
+        </div>
+    </div>
+
         {% endblock %}
