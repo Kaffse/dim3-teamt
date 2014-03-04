@@ -12,8 +12,8 @@ Team Members: Alastair Weir (110682w), Keir Smith, Peter Yordanov (1103620y), Go
 Installation instructions (UNIX)
 
 1. Clone this repo
-2. Install mysql mysql-server mysql-python
-3. pip install south
+2. $ sudo apt-get install libmysqlclient-dev
+3. $ sudo pip install -r requriements.txt
 4. mysql -u root -p
 5. CREATE DATABASE dim3;
 6. CREATE USER 'dim3'@'localhost' IDENTIFIED BY 't34mt34mt';
