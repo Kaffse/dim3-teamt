@@ -2,8 +2,35 @@
 
 {% block title %}Dashboard - AB{% endblock %}
 
-        <! Need to put formatting grid in here using Bootstrap for these two blocks>
-        {% block body_block %}
-            {% block list_block %} List Block {% endblock %}
-            {% block project_details_block %} Details Block {% endblock %}
+{% block body_block %}
+  {% if user.is_authenticated %}
+  <div class="col-lg-8">
+    <div class="well">
+    {% block list_block %}
+        {% if projects %}
+          <h2>{{ user.username }}'s Projects</h2>
+          <ul>
+            {% for project in users_projects %}
+            <li>{{ project.name }}</li>
+            {% endfor %}
+          </ul>
+          {% else %}
+            <h1>You appear to have no projects</h1>
+            <p>Make your first one now!</p>
+            <a href='/aggressiveBackpack/new_project/'<button type="button" class="btn btn-primary btn-lg">New Project</button></a>
+          {% endif %}
+          {% endblock %}
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="well">
+        {% block project_details_block %}
+          <h1>Here is the details block</h1>
+        {% endblock %}
+      </div>
+    </div>
+  {% else %}
+    <h1>You need to log in</h1>
+  {% endif %}
         {% endblock %}

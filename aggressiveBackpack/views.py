@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from aggressiveBackpack.forms import UserForm, UserProfileForm
+from aggressiveBackpack.models import Project, User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -14,7 +15,9 @@ def index(request):
 
 def dashboard(request):
 	context = RequestContext(request)
-	return render_to_response('aggressiveBackpack/dashboard.html', context)
+	current_user = User.objects.get(username = context.username)
+	users_projects = current_user.projects.all()
+	return render_to_response('aggressiveBackpack/dashboard.html', context, users_projects)
 
 def settings(request):
 	context = RequestContext(request)
