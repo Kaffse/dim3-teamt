@@ -10,13 +10,14 @@
         <!-- Help from the template example page. bootswatch.com/superhero -->
         <div class="col-lg-8">
         <div class="well">
-            <form class="form-horizontal" id="register_form" method="post" action="/aggressiveBackpack/register">
+            <form class="form-horizontal" id="login_form" method="post" action="/aggressiveBackpack/login/">
+              {% csrf_token %}
               <fieldset>
                     <!-- Username -->
                     <div class="form-group">
                       <label for="inputUsername" class="col-lg-2 control-label">Username</label>
                       <div class="col-lg-10">
-                        <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+                        <input type="text" class="form-control" name='username' id="inputUsername" placeholder="Username">
                       </div>
                     </div>
 
@@ -24,7 +25,7 @@
                     <div class="form-group">
                       <label for="inputPassword" class="col-lg-2 control-label">Password</label>
                       <div class="col-lg-10">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                        <input type="password" class="form-control" name='password' id="inputPassword" placeholder="Password">
                       </div>
                     </div>
 

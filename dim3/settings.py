@@ -41,10 +41,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	'aggressiveBackpack',
+	  'aggressiveBackpack',
     'south',
     'django_markdown',
     'keyboard_shortcuts',
+    'taggit',
 )
 
 MIDDLEWARE_CLASSES = (

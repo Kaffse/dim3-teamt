@@ -4,11 +4,18 @@
 
 
 {% block body_block %}
+{% if registered %}
+<div class="col-lg-8">
+	<strong> Thanks for registering!</strong>
+</div>
+{% else %}
+
 <div class="row">
 	<div class="col-lg-8">
 		<div class="well">
-			<form class="form-horizontal" id="register_form" method="post" action="/aggressiveBackpack/register">
-			  <fieldset>
+			<form class="form-horizontal" id="register_form" method="post" action="/aggressiveBackpack/register/" enctype="multipart/form-data">
+			  {% csrf_token %}
+				<fieldset>
 			  	<legend>Register Now!</legend>
 					<!-- Username -->
 				    <div class="form-group">
@@ -60,11 +67,15 @@
 			</form>
 		</div>
 	</div>
+{% endif %}
 
 	<div class='col-lg-4'>
 		<div class="well">
-			<p>Hello</p>
-		</div>
+			<h2>Why should I register?</h2>
+			</br>
+			<p>Signing up for a free account lets you create your own projects, collaborate with team mates and make progress on projects faster than ever!</p>
+			<p>What's stopping you, <b>Sign up today!</b></p>
+	</div>
 	</div>
 </div>
 

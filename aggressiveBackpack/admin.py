@@ -1,9 +1,9 @@
 from django.contrib import admin
 
-from aggressiveBackpack.models import Project
-from aggressiveBackpack.models import User
-from aggressiveBackpack.models import Task
+from aggressiveBackpack.models import UserProfile, Project, List, Task
 
+
+admin.site.register(UserProfile)
 admin.site.register(Project)
-admin.site.register(User)
+admin.site.register(List)
 admin.site.register(Task)
