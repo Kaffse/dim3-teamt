@@ -32,9 +32,30 @@
   </div>
 </div>
 
-<div class="col-lg-8">
-  <div class="well">
-    
-  </div>
+<div class="col-lg-12">
+    {% if lists %}
+      {% for list in lists %}
+        <div class="col-lg-3">
+          <div class="panel panel-default">
+            <div style="background-color:{{ list.colour }}" class="panel-heading">{{ list.name }}</div>
+            <div class="panel-body">
+              {% if list.tasks %}
+                {% for task in list.tasks %}
+                  <button type="button" id={{ task.id }} class="btn btn-default btn-lg btn-block">{{ task.title }}</button>
+                {% endfor %}
+              {% else %}
+                <p>Time to make your first task</p>
+              {% endif %}
+            </div>
+            <div class="panel-footer">
+              <a href=""><i class="fa fa-plus"></i> New Task</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h1>There are no lists for your project yet.</h1>
+      <p>Hit that button up top left to make your first one!</p>
+    {% endif %}
 </div>
 {% endblock %}
