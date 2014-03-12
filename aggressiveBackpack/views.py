@@ -31,6 +31,7 @@ def project(request, project_name_url):
 		# URLs don't handle spaces well, so we encode them as underscores.
 		# We can then simply replace the underscores with spaces again to get the name.
 		project_name = project_name_url.replace('_', ' ')
+		print 'projectname: ' + project_name
 
 		# Create a context dictionary which we can pass to the template rendering engine.
 		# We start by containing the name of the category passed by the user.
@@ -60,12 +61,14 @@ def project(request, project_name_url):
 			context_dict['project'] = project
 
 		except Project.DoesNotExist:
+			print 'maaaate, it doesn\'t exist'
+			return render_to_response('aggressiveBackpack/no_project_exists.html', context_dict, context)
 			pass
 			# We get here if we didn't find the specified category.
 			#Don't do anything - the template displays the "no category" message for us.
 
 			# Go render the response and return it to the client.
-		return render_to_response('rango/project.html', context_dict, context)
+		return render_to_response('aggressiveBackpack/project.html', context_dict, context)
 
 
 @login_required
@@ -197,6 +200,11 @@ def new_project(request):
 		if request.method == 'POST':
 			# Attempt to grab information from the raw form information.
 			new_project_form = NewProjectForm(data=request.POST)
+
+			#Assign the owner of the project
+			#cur_user = User.objects.get(username=request.user)
+		#	cur_pro = UserProfile.objects.get(user=cur_user)
+			#new_project_form.data['owner'] = cur_pro
 
 			# If the form is valid...
 			if new_project_form.is_valid():

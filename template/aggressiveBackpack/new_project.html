@@ -6,7 +6,11 @@
   <form class="form-horizontal" id="new_project_form" method="post" action="/aggressiveBackpack/new_project/" enctype="multipart/form-data">
     {% csrf_token %}
     <fieldset>
-      <!-- Project Name -->
+        <!-- User name -->
+          <div class="form-group">
+            <input class="form-control" id="inputDefault" name='owner' type="text" placeholder="{{ user.username }}">
+          </div>
+        <!-- Project Name -->
         <div class="form-group">
           <input class="form-control input-lg" type="text" name='name' id="inputLarge" placeholder='Project Name'>
         </div>

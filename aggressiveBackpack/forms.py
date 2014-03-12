@@ -20,4 +20,4 @@ class UserProfileForm(forms.ModelForm):
 class NewProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        fields = ('name', 'description', 'website', 'tags')
+        fields = ('owner', 'name', 'description', 'website', 'tags')
