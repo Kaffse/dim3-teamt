@@ -10,12 +10,13 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SETTINGS_DIR = os.path.dirname(__file__)
 PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
 PROJECT_PATH = os.path.abspath(PROJECT_PATH)
 TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'template')
-STATIC_PATH = os.path.join(PROJECT_PATH,'static')
+STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -41,7 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	  'aggressiveBackpack',
+    'aggressiveBackpack',
     'south',
     'django_markdown',
     'keyboard_shortcuts',
@@ -75,13 +76,13 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': PROJECT_PATH+'/dim3db',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': PROJECT_PATH + '/dim3db',  # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-       # 'USER': 'dim3',
-       # 'PASSWORD': 't34mt34mt',
-       # 'HOST': '127.0.0.1',                   # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-       # 'PORT': '',                      # Set to empty string for default.
+        # 'USER': 'dim3',
+        # 'PASSWORD': 't34mt34mt',
+        # 'HOST': '127.0.0.1',                   # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        # 'PORT': '',                      # Set to empty string for default.
     }
 }
 
@@ -122,7 +123,7 @@ STATICFILES_DIRS = (
 )
 
 TEMPLATE_DIRS = (
-	TEMPLATE_PATH,
+TEMPLATE_PATH,
 )
 
 MEDIA_URL = '/media/'
@@ -154,4 +155,4 @@ LOGGING = {
     }
 }
 
-LOGIN_URL='/aggressiveBackpack/login.html/'
+LOGIN_URL = '/aggressiveBackpack/login.html/'
