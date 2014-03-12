@@ -32,6 +32,10 @@
   </div>
 </div>
 
+<!--Main list view
+    Populates from Django's context with lists and tasks.
+    Not decided if it will be a scrollable element (horizontally) or paginated.
+    -->
 <div class="col-lg-12">
     {% if lists %}
       {% for list in lists %}

@@ -14,20 +14,6 @@ Installation instructions (UNIX)
 1. Clone this repo
 2. $ sudo apt-get install libmysqlclient-dev & python-dev
 3. $ sudo pip install -r requriements.txt
-4. mysql -u root -p
-5. CREATE DATABASE dim3;
-6. CREATE USER 'dim3'@'localhost' IDENTIFIED BY 't34mt34mt';
-7. GRANT ALL PRIVILEGES ON dim3.* TO 'dim3'@'localhost';
-8. quit
-9. python manage.py syncdb
-10. python manage.py runserver
-
-Installation instructions (Windows)
-
-1. Clone this repo
-2. Install mysql mysql-server mysql-python
-3. pip install south
-4. Set up Xampp  - Apache + MySQL (user root no password on localhost)
-5. Start services > Create dim3 database in phpMyAdmin
-6. python manage.py syncdb
-7. python manage.py runserver
+4. $ ./manage.py syncdb
+5. $ ./manage.py migrate
+6. $ ./manage.py runserver
