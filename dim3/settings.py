@@ -76,7 +76,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': BASE_DIR+'dim3db',                      # Or path to database file if using sqlite3.
+        'NAME': PROJECT_PATH+'/dim3db',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
        # 'USER': 'dim3',
        # 'PASSWORD': 't34mt34mt',
@@ -153,3 +153,5 @@ LOGGING = {
         },
     }
 }
+
+LOGIN_URL='/aggressiveBackpack/login.html/'

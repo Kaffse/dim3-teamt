@@ -28,9 +28,9 @@ class SeparatedValuesField(models.TextField):
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     # The additional attributes we wish to include.
-    friends = SeparatedValuesField()
+    friends = models.ManyToManyField('self', blank=True, null=True)
     picture = models.ImageField(upload_to='profile_images', blank=True)
-    projects = models.ManyToManyField('Project')
+    projects = models.ManyToManyField('Project', blank=True)
     # This line is required. Links UserProfile to a User model instance.
     # Override the __unicode__() method to return out something meaningful!
     def __unicode__(self):
@@ -43,12 +43,15 @@ class UserProfile(models.Model):
 #Using django-taggit to simplify tags
 #http://django-taggit.readthedocs.org/en/latest/getting_started.html
 class Project(models.Model):
+    owner = models.ForeignKey(UserProfile, related_name='owner_relation')
     name = models.CharField(max_length=128)
     description = models.CharField(max_length=300)
     picture = models.ImageField(upload_to='project_images', blank=True)
     website = models.URLField(blank=True)
-    team_members = SeparatedValuesField()
-    tags = TaggableManager()
+    team_members = models.ManyToManyField('UserProfile', blank=True, related_name='team_members_relation')
+    tags = TaggableManager(blank=True)
+    def __unicode__(self):
+        return self.name
 
 class List(models.Model):
     #Many lists belong to one project
@@ -56,6 +59,8 @@ class List(models.Model):
     tasks = models.ManyToManyField('Task')
     name = models.CharField(max_length=128)
     colour = models.CharField(max_length=10)
+    def __unicode__(self):
+        return self.project.name + ":" + self.name
 
 #NOTE! - Abstracting the tags (category, progress and priority) to project level.
 class Task(models.Model):
@@ -65,6 +70,11 @@ class Task(models.Model):
     #Standard title & description
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=300)
+    def __unicode__(self):
+        return self.project.name + ":" + self.list.name + ":" + self.title
+
+#class Friend(models.Model):
+#    friend_profile = models.UserProfile()
 
 #NOTE! - Abstracting the tags (category, progress and priority) to project level.
 #class Tag(models.Model):
