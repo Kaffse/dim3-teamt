@@ -203,7 +203,7 @@ def new_project(request):
 				# Save the project's form data to the database.
 				new_project = new_project_form.save()
 
-				# Update our variable to tell the template registration was successful.
+				# Update our variable to tell the template creation was successful.
 				new_project_created = True
 
 				# Invalid form or forms - mistakes or something else?
