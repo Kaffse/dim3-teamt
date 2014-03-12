@@ -1,6 +1,5 @@
 {% extends 'aggressiveBackpack/base.html' %}
-{% load static %}
-{% load staticfiles %}
+
 {% block title %}Project - AB{% endblock %}
 
 <script src="{% static "/js/aggressiveBackpack/new-project-page.js" %}"></script>
@@ -12,7 +11,9 @@
     <p><i>Created by {{ project.owner }}</i></p>
   </div>
 
-  <!-- List creation button & dialog -->
+  <!-- List creation button & dialog
+      Don't know how to link this with JS and make it actually work!
+        -->
   <button id='new-list-button' type="button" class="btn btn-primary">New List</button>
   <div id='new-list=dialog' class="modal">
   <div class="modal-dialog">
