@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load staticfiles %}
 {% load hotkeys %}
 <html lang="en">
 <head>
@@ -47,7 +48,7 @@
                     </li>
 
                     {% else %}
-                    <li> 
+                    <li>
                     <a href="/aggressiveBackpack/login/"><i class="fa fa-sign-in"></i>  Sign in</a>
                     </li>
                     <li>
@@ -58,7 +59,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <! User's profile image here>
-                        <a href="/aggressiveBackpack/user/"><i class="fa fa-user"></i>  
+                        <a href="/aggressiveBackpack/user/"><i class="fa fa-user"></i>
                             {% if user.is_authenticated %}
                             {{user.username}}
                             {% else %}
