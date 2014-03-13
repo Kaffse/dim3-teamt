@@ -17,6 +17,7 @@
   <button id='new-list-button' data-toggle="modal" data-target="#new-list-dialog" class="btn btn-primary">New List</button>
 
   <!-- New list dialog -->
+
   <div id='new-list-dialog' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -26,31 +27,28 @@
       </div>
       <div class="modal-body">
         <!-- New List Form -->
-        <form class="form-horizontal" id="new_list_form" method="post" action="/aggressiveBackpack/new_project/" enctype="multipart/form-data">
+        <form class="form-horizontal" id="new_task_form" method="post" action="/aggressiveBackpack/project/" enctype="multipart/form-data">
           {% csrf_token %}
           <fieldset>
-              <!-- User name -->
-                <div class="form-group">
-                  <input class="form-control" id="inputDefault" name='owner' type="text" placeholder="{{ user.username }}">
-                </div>
               <!-- Project Name -->
               <div class="form-group">
-                <input class="form-control input-lg" type="text" name='name' id="inputLarge" placeholder='Project Name'>
+                <input class="form-control input-lg" type="text" name='project' id="inputDefault" placeholder='Project Name'>
               </div>
 
-              <!-- Description -->
+              <!-- list name -->
               <div class="form-group">
-                <textarea class="form-control" rows="3" name='description' id="textArea" placeholder='Description'></textarea>
+                <textarea class="form-control" rows="3" name='name' id="textArea" placeholder='List Name'></textarea>
               </div>
 
-              <!-- Tags -->
+              <!-- Tasks -->
               <div class="form-group">
-                <input type="text" class="form-control" name='tags' id="inputDefault" placeholder='Assign your project tags here.'>
+                <input type="text" class="form-control" name='tasks' id="inputDefault" placeholder='Tasks'>
               </div>
 
-              <!-- Website -->
+              <!-- Colour -->
               <div class="form-group">
-                <input type="text" class="form-control" name='website' id="inputDefault" placeholder='Got a website for that project?'>
+                <label class="control-label" for="focusedInput">Choose a colour</label>
+                <input type="color" class="form-control" name='colour' id="inputDefault" placeholder='Colours!'>
               </div>
         </div>
       <div class="modal-footer">
@@ -85,7 +83,59 @@
               {% endif %}
             </div>
             <div class="panel-footer">
-              <a href=""><i class="fa fa-plus"></i> New Task</a>
+              <!-- New task link to open modal -->
+              <a href="" data-toggle="modal" data-target="#new-task-modal"><i class="fa fa-plus"></i> New Task</a>
+
+              <!-- New task Modal -->
+              <div class="modal fade" id="new-task-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                      <!-- New Task Form -->
+                      <form class="form-horizontal" id="new_task_form" method="post" action="/aggressiveBackpack/project/" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <fieldset>
+                            <!-- List name -->
+                              <div class="form-group">
+                                <input class="form-control" id="inputDefault" name='list' type="text" placeholder="List Name">
+                              </div>
+                            <!-- Project Name -->
+                            <div class="form-group">
+                              <input class="form-control input-lg" type="text" name='project' id="inputDefault" placeholder='Project Name'>
+                            </div>
+
+                            <!-- Title -->
+                            <div class="form-group">
+                              <textarea class="form-control" rows="3" name='description' id="inputDefault" placeholder='Title'></textarea>
+                            </div>
+
+                            <!-- Description -->
+                            <div class="form-group">
+                              <input type="text" class="form-control" name='website' id="textArea" placeholder='Description'>
+                            </div>
+
+                            <!-- Tags -->
+                            <div class="form-group">
+                              <input type="text" class="form-control" name='tags' id="inputDefault" placeholder='Tags, separated by commas'>
+                            </div>
+
+
+                      </div>
+                    <div class="modal-footer">
+                      <!-- Submit & Cancel button -->
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                      </div>
+                    </div>
+                  </fieldset>
+                  </form>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
