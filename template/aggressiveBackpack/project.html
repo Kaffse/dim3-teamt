@@ -2,6 +2,10 @@
 
 {% block title %}Project - AB{% endblock %}
 
+{% block extra_scripts %}
+<script src="/../../static/js/custom/project-page.js"></script>
+{% endblock %}
+
 {% block body_block %}
   <!-- Page header -->
   <div class='page-header'>
@@ -12,8 +16,9 @@
   <!-- List creation button & dialog
       Don't know how to link this with JS and make it actually work!
         -->
-  <button id='new-list-button' type="button" class="btn btn-primary">New List</button>
-  <div id='new-list=dialog' class="modal">
+  <button id='new-list-button' data-toggle="modal" data-target="#new-list-dialog" class="btn btn-primary">New List</button>
+
+  <div id='new-list-dialog' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -43,8 +48,8 @@
             <div style="background-color:{{ list.colour }}" class="panel-heading">{{ list.name }}</div>
             <div class="panel-body">
               {% if list.tasks %}
-                {% for task in list.tasks %}
-                  <button type="button" id={{ task.id }} class="btn btn-default btn-lg btn-block">{{ task.title }}</button>
+                {% for task in tasks %}
+                    <button type="button" id={{ task.id }} class="btn btn-default btn-lg btn-block">{{ task.title }}</button>
                 {% endfor %}
               {% else %}
                 <p>Time to make your first task</p>
