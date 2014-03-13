@@ -218,6 +218,10 @@ def user_logout(request):
 @login_required
 def new_project(request):
 		context = RequestContext(request)
+		cur_user = User.objects.get(username=request.user)
+		cur_pro = UserProfile.objects.get(user=cur_user)
+		context_dict = {}
+		context_dict['UserProfile'] = cur_pro
 
 		# A boolean value for telling the template whether the new project creation was successful.
 		# Set to False initially. Code changes value to True when creation succeeds.
@@ -227,11 +231,6 @@ def new_project(request):
 		if request.method == 'POST':
 			# Attempt to grab information from the raw form information.
 			new_project_form = NewProjectForm(data=request.POST)
-
-			#Assign the owner of the project
-			#cur_user = User.objects.get(username=request.user)
-		#	cur_pro = UserProfile.objects.get(user=cur_user)
-			#new_project_form.data['owner'] = cur_pro
 
 			# If the form is valid...
 			if new_project_form.is_valid():
@@ -252,8 +251,8 @@ def new_project(request):
 		else:
 			new_project_form = NewProjectForm()
 
+		context_dict['new_project_form'] = new_project_form
+		context_dict['new_project_created'] = new_project_created
 		# Render the template depending on the context.
 		return render_to_response(
-		'aggressiveBackpack/new_project.html',
-		{'new_project_form': new_project_form, 'new_project_created': new_project_created},
-		context)
+		'aggressiveBackpack/new_project.html', context_dict, context)
