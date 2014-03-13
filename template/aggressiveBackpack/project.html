@@ -35,20 +35,20 @@
                 <input class="form-control input-lg" type="text" name='project' id="inputDefault" placeholder='Project Name'>
               </div>
 
-              <!-- list name -->
-              <div class="form-group">
-                <textarea class="form-control" rows="3" name='name' id="textArea" placeholder='List Name'></textarea>
-              </div>
-
               <!-- Tasks -->
               <div class="form-group">
                 <input type="text" class="form-control" name='tasks' id="inputDefault" placeholder='Tasks'>
               </div>
 
+              <!-- list name -->
+              <div class="form-group">
+                <textarea class="form-control" rows="3" name='name' id="textArea" placeholder='List Name'></textarea>
+              </div>
+
               <!-- Colour -->
               <div class="form-group">
-                <label class="control-label" for="focusedInput">Choose a colour</label>
-                <input type="color" class="form-control" name='colour' id="inputDefault" placeholder='Colours!'>
+                <p>Give your list a colour</p>
+                <input type="color" name='colour' value="#fffff" placeholder='Colours!'>
               </div>
         </div>
       <div class="modal-footer">
@@ -92,7 +92,7 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                      <h4 class="modal-title" id="myModalLabel">Create a new task</h4>
                     </div>
                     <div class="modal-body">
                       <!-- New Task Form -->

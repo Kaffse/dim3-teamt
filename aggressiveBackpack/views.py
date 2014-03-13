@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from aggressiveBackpack.forms import UserForm, UserProfileForm, NewProjectForm
+from aggressiveBackpack.forms import UserForm, UserProfileForm, NewProjectForm, NewListForm, NewTaskForm
 from aggressiveBackpack.models import Project, User, UserProfile, List, Task
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
@@ -61,13 +61,38 @@ def project(request, project_name_url):
 			context_dict['project'] = project
 
 		except Project.DoesNotExist:
-			print 'maaaate, it doesn\'t exist'
+			print 'Project doesn\'t exist'
 			return render_to_response('aggressiveBackpack/no_project_exists.html', context_dict, context)
 			pass
 			# We get here if we didn't find the specified category.
 			#Don't do anything - the template displays the "no category" message for us.
 
-			# Go render the response and return it to the client.
+		#Handling the 2 different forms, new list and new task, here
+		created = False
+		if request.method == 'POST':
+				#Attempt to access information from both forms
+				list_form = NewListForm(data=request.POST)
+				task_form = NewTaskForm(data=request.POST)
+
+				#If list_form is valid
+				if list_form.is_valid():
+					list = list_form.save()
+					created = True
+
+				elif task_form.is_valid():
+					task = task_form.save()
+					created = True
+
+				else:
+					print list_form.errors, task_form.errors
+		else:
+			list_form = NewListForm()
+			task_form = NewTaskForm()
+
+		# Go render the response and return it to the client.
+		context_dict['list_form'] = list_form
+		context_dict['task_form'] = task_form
+		context_dict['created'] = created
 		return render_to_response('aggressiveBackpack/project.html', context_dict, context)
 
 
