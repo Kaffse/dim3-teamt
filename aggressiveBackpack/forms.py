@@ -21,3 +21,8 @@ class NewProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = ('owner', 'name', 'description', 'website', 'tags')
+
+class NewListForm(forms.ModelForm):
+    class Meta:
+        model = List
+        fields = ('project', 'name', 'tasks', 'colour')
