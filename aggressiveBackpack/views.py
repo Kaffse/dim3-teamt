@@ -118,17 +118,17 @@ def register(request):
 					# Update our variable to tell the template registration was successful.
 					registered = True
 
-					# Invalid form or forms - mistakes or something else?
-					# Print problems to the terminal.
-					# They'll also be shown to the user.
-				else:
-					print user_form.errors, profile_form.errors
+			# Invalid form or forms - mistakes or something else?
+			# Print problems to the terminal.
+			# They'll also be shown to the user.
+			else:
+				print user_form.errors, profile_form.errors
 
 					# Not a HTTP POST, so we render our form using two ModelForm instances.
 					# These forms will be blank, ready for user input.
-			else:
-				user_form = UserForm()
-				profile_form = UserProfileForm()
+		else:
+			user_form = UserForm()
+			profile_form = UserProfileForm()
 
 		# Render the template depending on the context.
 		return render_to_response(

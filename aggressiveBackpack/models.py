@@ -34,9 +34,9 @@ class Project(models.Model):
 class List(models.Model):
     #Many lists belong to one project
     project = models.ForeignKey(Project, related_name='project_relation')
-    tasks = models.ManyToManyField('Task', related_name='tasks_relation')
     name = models.CharField(max_length=128)
-    colour = models.CharField(max_length=10)
+    tasks = models.ManyToManyField('Task', related_name='tasks_relation', blank=True)
+    colour = models.CharField(max_length=10, blank=True)
 
     def __unicode__(self):
         return self.project.name + ":" + self.name
@@ -49,7 +49,7 @@ class Task(models.Model):
     project = models.ForeignKey(Project, related_name='owning_project_relation')
     #Standard title & description
     title = models.CharField(max_length=100)
-    description = models.CharField(max_length=300)
+    description = models.CharField(max_length=1000, blank=True)
     tags = TaggableManager(blank=True)
 
     def __unicode__(self):
