@@ -14,7 +14,7 @@
           <h1>Projects</h1>
           <ul>
             {% for project in userprojects %}
-            <li><a href="{{ project.url }}">{{ project.name }}</a></li>
+            <li><a href="/aggressiveBackpack/project/{{ project.url }}">{{ project.name }}</a></li>
             {% endfor %}
           </ul>
           {% else %}
