@@ -41,9 +41,16 @@
         <div class='container'>
           <h3>Following</h3>
         </div>
+        <!--{ if profile.friends }
+          <ul>
+            { for friend in profile.friends }
+            <li><a href="#">{{ friend.username }}</a></li>
+            { endfor }
+        { else } -->
         <!-- Need to add an if statement once a friends list can be pulled from views.py -->
-        <p>Looks like you aren't following anyone. Go find someone on Aggressive Backpack!</p>
+          <p>Looks like you aren't following anyone. Go find someone on Aggressive Backpack!</p>
         <!-- Ideally there would be a seach bar (autocomplete) here -->
+        <!-- { endif } -->
       {% endblock %}
     </div>
   </div>

@@ -21,6 +21,7 @@ def dashboard(request):
 		cur_pro = UserProfile.objects.get(user=cur_user)
 		users_projects = Project.objects.filter(owner=cur_pro)
 		template_context = {'userprojects': users_projects}
+		template_context['profile']=cur_pro
 		for project in users_projects:
 				project.url = project.name.replace(' ', '_')
 		return render_to_response('aggressiveBackpack/dashboard.html', template_context, context)

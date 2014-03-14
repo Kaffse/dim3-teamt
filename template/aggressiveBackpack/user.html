@@ -14,8 +14,9 @@
     </a>
     <div class="media-body">
       <h2 class="media-heading">{{ user.username }}</h2>
-      <p id='description'><b>About me: </b>I work on lots of crazy cool projects that do cool things to make people's lives better.</p>
-      <b>The projects I'm working on just now are:</b>
+      <p id='description'><b>About me: </b>{{ profile.about_me }}</p>
+      <p id='website'><b>Website:</b><a href='{{ profile.website }}'>{{ profile.website }}</a></p>
+      <p><b>The projects I'm working on just now are:</b></p>
         {% if userprojects %}
           <ul>
           {% for project in userprojects %}
@@ -25,6 +26,7 @@
         {% else %}
         <p>I should probably find something to work on. #lazy</p>
         {% endif %}
+
     </div>
   </div>
 {% endblock %}
