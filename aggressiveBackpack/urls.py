@@ -11,4 +11,5 @@ urlpatterns = patterns('',
                        url(r'^register/', views.register, name='register'),
                        url(r'^new_project/', views.new_project, name='new_project'),
                        url(r'^project/(?P<project_name_url>\w+)/$', views.project, name='project'),
+                       url(r'^user/', views.user, name='user'),
 )

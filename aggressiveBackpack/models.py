@@ -8,6 +8,8 @@ class UserProfile(models.Model):
     friends = models.ManyToManyField('self', blank=True, null=True)
     picture = models.ImageField(upload_to='profile_images', blank=True)
     projects = models.ManyToManyField('Project', blank=True)
+    website = models.URLField(blank=True)
+    about_me = models.CharField(max_length=400, blank=True)
 
     # This line is required. Links UserProfile to a User model instance.
     # Override the __unicode__() method to return out something meaningful!

@@ -256,3 +256,16 @@ def new_project(request):
 		# Render the template depending on the context.
 		return render_to_response(
 		'aggressiveBackpack/new_project.html', context_dict, context)
+
+@login_required
+def user(request):
+	context = RequestContext(request)
+	cur_user = User.objects.get(username=request.user)
+	cur_pro = UserProfile.objects.get(user=cur_user)
+	users_projects = Project.objects.filter(owner=cur_pro)
+	context_dict = {'userprojects': users_projects}
+	context_dict['profile'] = cur_pro
+	for project in users_projects:
+			project.url = project.name.replace(' ', '_')
+	return render_to_response(
+	'aggressiveBackpack/user.html', context_dict, context)

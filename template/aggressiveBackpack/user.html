@@ -1,0 +1,30 @@
+{% extends 'aggressiveBackpack/base.html' %}
+
+{% block title %}{{ user.username }} - AB{% endblock %}
+
+{% block body_block %}
+<!-- Page header -->
+  <div class='page-header'>
+    <h1 id='type'>{{ user.username }}'s Profile</h1>
+  </div>
+
+  <div class="media">
+    <a class="pull-left" href="#">
+      <img class="media-object" src="http://molempire.com/wp-content/uploads/2012/02/happy-troy.gif" alt="..." height='200' width='300'>
+    </a>
+    <div class="media-body">
+      <h2 class="media-heading">{{ user.username }}</h2>
+      <p id='description'><b>About me: </b>I work on lots of crazy cool projects that do cool things to make people's lives better.</p>
+      <b>The projects I'm working on just now are:</b>
+        {% if userprojects %}
+          <ul>
+          {% for project in userprojects %}
+            <li><a href=""/aggressiveBackpack/project/{{ project.url }}"">{{ project.name }}</a></li>
+          {% endfor %}
+          </ul>
+        {% else %}
+        <p>I should probably find something to work on. #lazy</p>
+        {% endif %}
+    </div>
+  </div>
+{% endblock %}
