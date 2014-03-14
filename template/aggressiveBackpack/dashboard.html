@@ -4,9 +4,12 @@
 
 {% block body_block %}
   {% if user.is_authenticated %}
+  <!-- Page header -->
   <div class='page-header'>
     <h1 id='type'>{{ user.username }}'s Dashboard</h1>
   </div>
+
+  <!-- Links to all of user's projects -->
   <div class="col-md-8">
     {% block list_block %}
         {% if userprojects %}
@@ -31,12 +34,16 @@
     {% endblock %}
   </div>
 
+<!-- Following Panel -->
   <div class="col-md-4">
     <div class="well">
       {% block project_details_block %}
         <div class='container'>
           <h3>Following</h3>
         </div>
+        <!-- Need to add an if statement once a friends list can be pulled from views.py -->
+        <p>Looks like you aren't following anyone. Go find someone on Aggressive Backpack!</p>
+        <!-- Ideally there would be a seach bar (autocomplete) here -->
       {% endblock %}
     </div>
   </div>

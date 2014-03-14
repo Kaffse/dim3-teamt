@@ -13,6 +13,7 @@ def index(request):
 	context = RequestContext(request)
 	return render_to_response('aggressiveBackpack/index.html', context)
 
+#Need to add access to the user's friends.
 @login_required
 def dashboard(request):
 		context = RequestContext(request)
