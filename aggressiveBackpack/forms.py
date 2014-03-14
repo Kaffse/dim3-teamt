@@ -18,6 +18,7 @@ class UserProfileForm(forms.ModelForm):
 
 
 class NewProjectForm(forms.ModelForm):
+    owner=forms.ModelChoiceField(queryset=UserProfile.objects.all(), required=False)
     class Meta:
         model = Project
         fields = ('owner', 'name', 'description', 'website', 'tags')

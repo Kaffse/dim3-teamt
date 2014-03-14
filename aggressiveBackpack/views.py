@@ -22,6 +22,7 @@ def dashboard(request):
 		users_projects = Project.objects.filter(owner=cur_pro)
 		template_context = {'userprojects': users_projects}
 		template_context['profile']=cur_pro
+		template_contex['friends'] = cur_pro.friends.all()
 		for project in users_projects:
 				project.url = project.name.replace(' ', '_')
 		return render_to_response('aggressiveBackpack/dashboard.html', template_context, context)
@@ -141,11 +142,11 @@ def register(request):
 				if 'picture' in request.FILES:
 					profile.picture = request.FILES['picture']
 
-					# Now we save the UserProfile model instance.
-					profile.save()
+				# Now we save the UserProfile model instance.
+				profile.save()
 
-					# Update our variable to tell the template registration was successful.
-					registered = True
+				# Update our variable to tell the template registration was successful.
+				registered = True
 
 			# Invalid form or forms - mistakes or something else?
 			# Print problems to the terminal.
@@ -237,7 +238,11 @@ def new_project(request):
 			# If the form is valid...
 			if new_project_form.is_valid():
 				# Save the project's form data to the database.
-				new_project = new_project_form.save()
+				new_project = new_project_form.save(commit=False)
+
+				new_project.owner=cur_pro
+
+				new_project.save()
 
 				# Update our variable to tell the template creation was successful.
 				new_project_created = True
@@ -265,6 +270,7 @@ def user(request):
 	cur_user = User.objects.get(username=request.user)
 	cur_pro = UserProfile.objects.get(user=cur_user)
 	users_projects = Project.objects.filter(owner=cur_pro)
+
 	context_dict = {'userprojects': users_projects}
 	context_dict['profile'] = cur_pro
 	for project in users_projects:
