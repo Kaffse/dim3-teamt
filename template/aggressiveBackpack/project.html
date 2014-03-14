@@ -8,13 +8,18 @@
 
 {% block body_block %}
   <!-- Page header -->
-  <div class='page-header'>
-    <h1 id='type'>{{ project.name }}</h1>
-    <p><i>Created by {{ project.owner }}</i></p>
+  <div>
+    <div class='col-lg-10'>
+      <h1 id='type'><b>{{ project.name }}</b></h1>
+      <h4>{{ project.description}}</h4>
+      <p><i>Created by {{ project.owner }}</i></p>
+    </div>
+    <div class='col-lg-2'>
+      <!-- List creation button -->
+      <button id='new-list-button' data-toggle="modal" data-target="#new-list-dialog" class="btn btn-primary btn-lg">New List</button>
+    </div>
   </div>
 
-  <!-- List creation button -->
-  <button id='new-list-button' data-toggle="modal" data-target="#new-list-dialog" class="btn btn-primary">New List</button>
 
   <!-- New list dialog -->
 
@@ -68,6 +73,7 @@
     Not decided if it will be a scrollable element (horizontally) or paginated.
     -->
 <div class="col-lg-12">
+  <h2>Lists</h2>
     {% if lists %}
       {% for list in lists %}
         <div class="col-lg-3">
