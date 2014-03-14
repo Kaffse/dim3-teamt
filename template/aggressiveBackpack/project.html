@@ -45,22 +45,22 @@
       </div>
       <div class="modal-body">
         <!-- New List Form -->
-        <form class="form-horizontal" id="new_task_form" method="post" action="/aggressiveBackpack/project/" enctype="multipart/form-data">
+        <form class="form-horizontal" id="new_list_form" method="post" action="/aggressiveBackpack/project/{{ projectURL }}/" enctype="multipart/form-data">
           {% csrf_token %}
           <fieldset>
               <!-- Project Name -->
               <div class="form-group">
-                <input class="form-control input-lg" type="text" name='project' id="inputDefault" placeholder='Project Name'>
+                <input class="form-control input-lg" type="hidden" name='project' id="inputDefault" value='{{ project.id }}'>
               </div>
 
               <!-- Tasks -->
               <div class="form-group">
-                <input type="text" class="form-control" name='tasks' id="inputDefault" placeholder='Tasks'>
+                <input type="hidden" class="form-control" name='tasks' id="inputDefault" value="">
               </div>
 
-              <!-- list name -->
+              <!-- List name -->
               <div class="form-group">
-                <textarea class="form-control" rows="3" name='name' id="textArea" placeholder='List Name'></textarea>
+                <textarea class="form-control" name='name' id="inputDefault" placeholder='List Name'></textarea>
               </div>
 
               <!-- Colour -->
@@ -117,26 +117,26 @@
                     </div>
                     <div class="modal-body">
                       <!-- New Task Form -->
-                      <form class="form-horizontal" id="new_task_form" method="post" action="/aggressiveBackpack/project/" enctype="multipart/form-data">
+                      <form class="form-horizontal" id="new_task_form" method="post" action="/aggressiveBackpack/project/{{ projectURL }}" enctype="multipart/form-data">
                         {% csrf_token %}
                         <fieldset>
-                            <!-- List name -->
+                            <!-- Parent list name -->
                               <div class="form-group">
-                                <input class="form-control" id="inputDefault" name='list' type="text" placeholder="List Name">
+                                <input class="form-control" id="inputDefault" name='list' type="hidden" value="Starting tasks">
                               </div>
-                            <!-- Project Name -->
+                            <!-- Parent project Name -->
                             <div class="form-group">
-                              <input class="form-control input-lg" type="text" name='project' id="inputDefault" placeholder='Project Name'>
+                              <input class="form-control input-lg" type="hidden" name='project' id="inputDefault" value="{{ project.id }}">
                             </div>
 
                             <!-- Title -->
                             <div class="form-group">
-                              <textarea class="form-control" rows="3" name='description' id="inputDefault" placeholder='Title'></textarea>
+                              <textarea class="form-control" name='title' id="inputDefault" placeholder='Title'></textarea>
                             </div>
 
                             <!-- Description -->
                             <div class="form-group">
-                              <input type="text" class="form-control" name='website' id="textArea" placeholder='Description'>
+                              <input type="text" class="form-control" name='description' id="textArea" placeholder='Description'>
                             </div>
 
                             <!-- Tags -->

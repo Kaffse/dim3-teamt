@@ -22,7 +22,7 @@ def dashboard(request):
 		users_projects = Project.objects.filter(owner=cur_pro)
 		template_context = {'userprojects': users_projects}
 		template_context['profile']=cur_pro
-		template_contex['friends'] = cur_pro.friends.all()
+		template_context['friends'] = cur_pro.friends.all()
 		for project in users_projects:
 				project.url = project.name.replace(' ', '_')
 		return render_to_response('aggressiveBackpack/dashboard.html', template_context, context)
@@ -64,6 +64,7 @@ def project(request, project_name_url):
 			# We also add the category object from the database to the context dictionary.
 			# We'll use this in the template to verify that the category exists.
 			context_dict['project'] = project
+			context_dict['projectURL'] = project.name.replace(' ', '_')
 
 		except Project.DoesNotExist:
 			print 'Project doesn\'t exist'
@@ -75,21 +76,30 @@ def project(request, project_name_url):
 		#Handling the 2 different forms, new list and new task, here
 		created = False
 		if request.method == 'POST':
+				print("into POST")
 				#Attempt to access information from both forms
 				list_form = NewListForm(data=request.POST)
 				task_form = NewTaskForm(data=request.POST)
 
 				#If list_form is valid
 				if list_form.is_valid():
-					list = list_form.save()
+					print("into list form validation")
+					list = list_form.save(commit=False)
+					list.project=project
+					list.save()
 					created = True
 
 				elif task_form.is_valid():
+					print("Into task form validation")
 					task = task_form.save()
 					created = True
 
 				else:
-					print list_form.errors, task_form.errors
+					print("Neither are valid. In that wee else")
+					print("New List errors")
+					print list_form.errors
+					print("New Task Errors")
+					print task_form.errors
 		else:
 			list_form = NewListForm()
 			task_form = NewTaskForm()
