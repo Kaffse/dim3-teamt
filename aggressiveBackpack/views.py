@@ -21,11 +21,13 @@ def dashboard(request):
 		cur_user = User.objects.get(username=request.user)
 		cur_pro = UserProfile.objects.get(user=cur_user)
 		users_projects = Project.objects.filter(owner=cur_pro)
-		all_projects = Project.objects.all()
+		all_projects = Project.objects.all().exclude(owner=cur_pro)
 		template_context = {'userprojects': users_projects, 'allprojects': all_projects}
 		template_context['profile']=cur_pro
 		template_context['friends'] = cur_pro.friends.all()
 		for project in users_projects:
+				project.url = project.name.replace(' ', '_')
+		for project in all_projects:
 				project.url = project.name.replace(' ', '_')
 		return render_to_response('aggressiveBackpack/dashboard.html', template_context, context)
 
