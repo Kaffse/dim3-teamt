@@ -170,6 +170,10 @@ def register(request):
 			user_form = UserForm()
 			profile_form = UserProfileForm()
 
+		#If successfully registered then return to index
+		if (registered == True):
+			return render_to_response("aggressiveBackpack/index.html",{'registered': registered}, context)
+
 		# Render the template depending on the context.
 		return render_to_response(
 		'aggressiveBackpack/register.html',
