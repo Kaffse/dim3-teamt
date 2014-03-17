@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
+from markupfield.fields import MarkupField
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
@@ -23,7 +24,7 @@ class UserProfile(models.Model):
 class Project(models.Model):
     owner = models.ForeignKey(UserProfile, related_name='owner_relation')
     name = models.CharField(max_length=128)
-    description = models.TextField()
+    description = MarkupField(markup_type='markdown')
     picture = models.ImageField(upload_to='project_images', blank=True)
     website = models.URLField(blank=True)
     team_members = models.ManyToManyField('UserProfile', blank=True, related_name='team_members_relation')
@@ -50,7 +51,7 @@ class Task(models.Model):
     list = models.ForeignKey('List', related_name='owning_list_relation')
     project = models.ForeignKey(Project, related_name='owning_project_relation')
     title = models.CharField(max_length=100)
-    description = models.TextField()
+    description = MarkupField(markup_type='markdown')
     tags = TaggableManager(blank=True)
 
     def __unicode__(self):
