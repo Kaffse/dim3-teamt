@@ -37,7 +37,7 @@ class List(models.Model):
     #Many lists belong to one project
     project = models.ForeignKey(Project, related_name='project_relation')
     name = models.CharField(max_length=128)
-    tasks = models.ManyToManyField('Task', related_name='tasks_relation', blank=True)
+    tasks = models.ManyToManyField('Task', related_name='tasks_relation', blank=True, null=True)
     colour = models.CharField(max_length=10, blank=True)
 
     def __unicode__(self):

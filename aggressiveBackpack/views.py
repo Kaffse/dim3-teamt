@@ -71,7 +71,7 @@ def project(request, project_name_url):
 			return render_to_response('aggressiveBackpack/no_project_exists.html', context_dict, context)
 			pass
 			# We get here if we didn't find the specified category.
-			#Don't do anything - the template displays the "no category" message for us.
+			# Don't do anything - the template displays the "no category" message for us.
 
 		#Handling the 2 different forms, new list and new task, here
 		created = False

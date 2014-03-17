@@ -3,21 +3,25 @@
 {% block title %}Project - AB{% endblock %}
 
 {% block extra_scripts %}
-<script src="/../../static/js/custom/project-page.js"></script>
+<script src="../../static/js/custom/project-page.js"></script>
+<script src="../../static/js/masonry.pkgd.min.js"></script>
+
 {% endblock %}
 
 {% block body_block %}
   <!-- Page header -->
   <div>
-    <div class='col-lg-10'>
+    <div class='col-lg-8'>
       <h1 id='type'><b>{{ project.name }}</b></h1>
       <h4>{{ project.description}}</h4>
       <p><i>Created by {{ project.owner }}</i></p>
     </div>
-    <div class='col-lg-2'>
+    <div class='col-lg-4'>
       <!-- List creation button -->
-      <button id='new-list-button' data-toggle="modal" data-target="#new-list-dialog" class="btn btn-primary btn-lg">New List</button>
+      <button id='new-list-button' data-toggle="modal" data-target="#new-list-modal" class="btn btn-primary btn-lg">New List</button>
+      <button id='new-list-button' data-toggle="modal" data-target="#new-task-modal" class="btn btn-primary btn-lg">New Task</button>
     </div>
+
   </div>
 
   <!-- View Task dialog -->
@@ -36,7 +40,7 @@
   </div>
 
   <!-- New list dialog -->
-  <div id='new-list-dialog' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+  <div id='new-list-modal' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -55,7 +59,7 @@
 
               <!-- Tasks -->
               <div class="form-group">
-                <input type="hidden" class="form-control" name='tasks' id="inputDefault" value="">
+                <input type="hidden" class="form-control" name='tasks' id="inputDefault">
               </div>
 
               <!-- List name -->
@@ -81,89 +85,93 @@
   </div>
 </div>
 
+<!-- New task Modal -->
+<div class="modal fade" id="new-task-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Create a new task</h4>
+      </div>
+      <div class="modal-body">
+        <!-- New Task Form -->
+        <form class="form-horizontal" id="new_task_form" method="post" action="/aggressiveBackpack/project/{{ projectURL }}" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset>
+              <!-- Parent project Name -->
+              <div class="form-group">
+                <input class="form-control input-lg" type="hidden" name='project' id="inputDefault" value="{{ project.id }}">
+              </div>
+
+              <!-- Dropdown for choosing which list to make new task in. -->
+              <div class="form-group">
+                <label for="select" class="col-lg-2 control-label">Parent List:</label>
+                <select class="form-control" name='list' id="select">
+                  {% for list in lists %}
+                    <option>{{ list.name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <!-- Title -->
+              <div class="form-group">
+                <textarea class="form-control" name='title' id="inputDefault" placeholder='Title'></textarea>
+              </div>
+
+              <!-- Description -->
+              <div class="form-group">
+                <input type="text" class="form-control" name='description' id="textArea" placeholder='Description'>
+              </div>
+
+              <!-- Tags -->
+              <div class="form-group">
+                <input type="text" class="form-control" name='tags' id="inputDefault" placeholder='Tags, separated by commas'>
+              </div>
+
+
+        </div>
+      <div class="modal-footer">
+        <!-- Submit & Cancel button -->
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </div>
+    </fieldset>
+    </form>
+    </div>
+  </div>
+</div>
+
 <!--Main list view
     Populates from Django's context with lists and tasks.
     Not decided if it will be a scrollable element (horizontally) or paginated.
     -->
-<div class="col-lg-12">
-  <h2>Lists</h2>
-    {% if lists %}
-      {% for list in lists %}
-        <div class="col-lg-3">
+    <h2>Lists</h2>
+      {% if lists %}
+        {% for list in lists %}
+        <div class='col-lg-3'>
           <div class="panel panel-default">
             <div style="background-color:{{ list.colour }}" class="panel-heading">{{ list.name }}</div>
-            <div class="panel-body">
-              {% if list.tasks %}
-                {% for task in tasks %}
-                  {% if task.list = list %}
-                    <button type="button" data-toggle="modal" data-target="#view-task-dialog" id={{ task.id }} class="btn btn-default btn-lg btn-block">{{ task.title }}</button>
-                  {% endif %}
-                {% endfor %}
-              {% else %}
-                <p>Time to make your first task</p>
-              {% endif %}
-            </div>
-            <div class="panel-footer">
-              <!-- New task link to open modal -->
-              <a href="" data-toggle="modal" data-target="#new-task-modal"><i class="fa fa-plus"></i> New Task</a>
-
-              <!-- New task Modal -->
-              <div class="modal fade" id="new-task-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title" id="myModalLabel">Create a new task</h4>
-                    </div>
-                    <div class="modal-body">
-                      <!-- New Task Form -->
-                      <form class="form-horizontal" id="new_task_form" method="post" action="/aggressiveBackpack/project/{{ projectURL }}" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <fieldset>
-                            <!-- Parent list name -->
-                              <div class="form-group">
-                                <input class="form-control" id="inputDefault" name='list' type="hidden" value="Starting tasks">
-                              </div>
-                            <!-- Parent project Name -->
-                            <div class="form-group">
-                              <input class="form-control input-lg" type="hidden" name='project' id="inputDefault" value="{{ project.id }}">
-                            </div>
-
-                            <!-- Title -->
-                            <div class="form-group">
-                              <textarea class="form-control" name='title' id="inputDefault" placeholder='Title'></textarea>
-                            </div>
-
-                            <!-- Description -->
-                            <div class="form-group">
-                              <input type="text" class="form-control" name='description' id="textArea" placeholder='Description'>
-                            </div>
-
-                            <!-- Tags -->
-                            <div class="form-group">
-                              <input type="text" class="form-control" name='tags' id="inputDefault" placeholder='Tags, separated by commas'>
-                            </div>
-
-
-                      </div>
-                    <div class="modal-footer">
-                      <!-- Submit & Cancel button -->
-                      <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Create</button>
-                      </div>
-                    </div>
-                  </fieldset>
-                  </form>
-                  </div>
-                </div>
+              <div class="panel-body">
+                {% if list.tasks %}
+                  {% for task in tasks %}
+                    {% if task.list = list %}
+                      <button type="button" data-toggle="modal" data-target="#view-task-dialog" id={{ task.id }} class="btn btn-default btn-lg btn-block">{{ task.title }}</button>
+                    {% endif %}
+                  {% endfor %}
+                {% else %}
+                  <p>Time to make your first task</p>
+                {% endif %}
               </div>
+            <!--<div class="panel-footer">-->
+              <!-- New task link to open modal -->
+              <!--<a href="" data-toggle="modal" data-target="#new-task-modal"><i class="fa fa-plus"></i> New Task</a>-->
             </div>
           </div>
         </div>
-      {% endfor %}
-    {% else %}
-      <h1>There are no lists for your project yet.</h1>
-      <p>Hit that button up top left to make your first one!</p>
-    {% endif %}
-</div>
+    {% endfor %}
+  {% else %}
+    <h1>There are no lists for your project yet.</h1>
+    <p>Hit that button up top to make your first one!</p>
+  {% endif %}
 {% endblock %}
