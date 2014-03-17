@@ -4,6 +4,5 @@ Pillow==2.3.0
 South==0.8.4
 django-keyboard-shortcuts==0.0.7
 django-markdown==0.5.4
-mysql-connector-python==1.1.6
 MySQL-python==1.2.5
 django-taggit==0.11.2
