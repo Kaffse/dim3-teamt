@@ -157,3 +157,17 @@ LOGGING = {
 }
 
 LOGIN_URL = '/aggressiveBackpack/login.html/'
+
+# START keyboard_shortcuts settings #
+HOTKEYS = [
+            {'keys': 'd',  # go to dashboard
+            'link': '/aggressiveBackpack/dashboard/'},
+            {'keys': 'n + p',  #make a new project
+            'link': '/aggressiveBackpack/new_project/'},
+            {'keys': 's',  #go to settings
+            'link': '/aggressiveBackpack/settings/'},
+            {'keys': 'n + l',  #make a new list
+            'js': 'alert(\'This keyboard shortcut will let you make a new list\');'},
+        ]
+SPECIAL_DISABLED = True
+# END keyboard_shortcuts settings #
