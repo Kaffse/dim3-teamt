@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'django_markdown',
     'keyboard_shortcuts',
     'taggit',
+    'taggit_templatetags',
 )
 
 MIDDLEWARE_CLASSES = (

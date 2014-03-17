@@ -5,18 +5,22 @@
 {% block extra_scripts %}
 <script src="/static/js/custom/project-page.js"></script>
 <script src="/static/js/masonry.pkgd.min.js"></script>
+<link href='/static/css/custom/project-page.css' rel='stylesheet' type='text/css'>
 
 {% endblock %}
 
 {% block body_block %}
   <!-- Page header -->
   <div>
-    <div class='col-lg-10'>
-      <h1 id='type'><b>{{ project.name }}</b></h1>
-      <h4>{{ project.description}}</h4>
-      <p><i>Created by {{ project.owner }}</i></p>
+    <div class='col-lg-9'>
+      <div class='well'>
+        <ul class="breadcrumb">
+          <li><a href="aggressiveBackpack/user">{{ project.owner }}</a></li>
+          <li class="active">{{ project.name }}</li>
+        </ul>
+        <p><i>{{ project.description}}</i></p>
+      </div>
     </div>
-    <div class='col-lg-2'>
       <!-- List creation button -->
       <button id='new-list-button' data-toggle="modal" data-target="#new-list-modal" class="btn btn-primary btn-lg">New List</button>
     </div>
@@ -152,7 +156,17 @@
                               <h4 class="modal-title">{{ task.title }}</h4>
                             </div>
                             <div class="modal-body">
-                              Details will be shown here once I figure out how to make them all display
+                              <p><b>Description: </b>{{ task.description }}</p><br>
+                              <p>
+                                <b>Tags:</b><br>
+                                {% if task.tags %}
+                                  <ul>
+                                    <li>Tags here</li>
+                                  </ul>
+                                {% else %}
+                                Add tags to view them here.
+                                {% endif %}
+                              </p>
                             </div>
                           </div>
                         </div>
