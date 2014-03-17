@@ -292,3 +292,15 @@ def user(request):
 			project.url = project.name.replace(' ', '_')
 	return render_to_response(
 	'aggressiveBackpack/user.html', context_dict, context)
+
+#Only deletes top level project and not its lists and tasks that it contains.
+#Theoretically a user could make a new project with the exact same name and access these
+#Old tasks and lists?
+@login_required
+def delete_project(request, project_name_url):
+	deleted=False
+	project_name = project_name_url.replace("_", " ")
+	to_delete = Project.objects.filter(name=project_name)
+	to_delete.delete()
+	deleted=True
+	return render_to_response('/aggressiveBackpack/dashboard.html/', {'deleted':deleted}, context)
