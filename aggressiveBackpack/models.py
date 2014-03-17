@@ -1,6 +1,46 @@
 from django.db import models
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
+from markdown import markdown
+
+#https://djangosnippets.org/snippets/882/
+class MarkdownTextField (TextField):
+    """
+    A TextField that automatically implements DB-cached Markdown translation.
+
+    Accepts two additional keyword arguments:
+
+    if allow_html is False, Markdown will be called in safe mode,
+    which strips raw HTML (default is allow_html = True).
+
+    if html_field_suffix is given, that value will be appended to the
+    field name to generate the name of the non-editable HTML cache
+    field.  Default value is "_html".
+
+    NOTE: The MarkdownTextField is not able to check whether the model
+    defines any other fields with the same name as the HTML field it
+    attempts to add - if there are other fields with this name, a
+    database duplicate column error will be raised.
+
+    """
+    def __init__ (self, *args, **kwargs):
+        self._markdown_safe = not kwargs.pop('allow_html', True)
+        self._html_field_suffix = kwargs.pop('html_field_suffix', '_html')
+        super(MarkdownTextField, self).__init__(*args, **kwargs)
+
+    def contribute_to_class (self, cls, name):
+        self._html_field = "%s%s" % (name, self._html_field_suffix)
+        TextField(editable=False).contribute_to_class(cls, self._html_field)
+        super(MarkdownTextField, self).contribute_to_class(cls, name)
+
+    def pre_save (self, model_instance, add):
+        value = getattr(model_instance, self.attname)
+        html = markdown(value, safe_mode=self._markdown_safe)
+        setattr(model_instance, self._html_field, html)
+        return value
+
+    def __unicode__ (self):
+        return self.attname
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
@@ -23,7 +63,7 @@ class UserProfile(models.Model):
 class Project(models.Model):
     owner = models.ForeignKey(UserProfile, related_name='owner_relation')
     name = models.CharField(max_length=128)
-    description = models.TextField('Description' blank=True)
+    description = models.MarkdownTextField('Description' blank=True)
     picture = models.ImageField(upload_to='project_images', blank=True)
     website = models.URLField(blank=True)
     team_members = models.ManyToManyField('UserProfile', blank=True, related_name='team_members_relation')
@@ -31,7 +71,6 @@ class Project(models.Model):
 
     def __unicode__(self):
         return self.name
-
 
 
 class List(models.Model):
@@ -51,7 +90,7 @@ class Task(models.Model):
     list = models.ForeignKey('List', related_name='owning_list_relation')
     project = models.ForeignKey(Project, related_name='owning_project_relation')
     title = models.CharField(max_length=100)
-    description = models.TextField( blank=True, null=True)
+    description = models.MarkdownTextField( blank=True, null=True)
     tags = TaggableManager(blank=True)
 
     def __unicode__(self):
