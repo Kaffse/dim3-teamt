@@ -26,12 +26,28 @@
 
             {% endfor %}
           </div>
+		  	  
       {% else %}
           <h1>You appear to have no projects</h1>
           <p>Make your first one now!</p>
-          <a href='/aggressiveBackpack/new_project/'<button type="button" class="btn btn-primary btn-lg">New Project</button></a>
+         
       {% endif %}
+	  
+	  
+	 
+	 
+	 
+	  
     {% endblock %}
+	{% endif %}	 
+		 
+	{% if !user.is_authenticated %}
+		 
+		 <h1>You need to log in</h1>
+          <p>Use the link below:</p>
+          <a href='/aggressiveBackpack/new_project/'<button type="button" class="btn btn-primary btn-lg">New Project</button></a>
+	{% endif %}	 
+	
   </div>
 
 <!-- Following Panel -->
@@ -54,7 +70,4 @@
       {% endblock %}
     </div>
   </div>
-  {% else %}
-  <h1>You need to log in</h1>
-  {% endif %}
 {% endblock %}

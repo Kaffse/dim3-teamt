@@ -16,6 +16,7 @@ def index(request):
 #Need to add access to the user's friends.
 @login_required
 def dashboard(request):
+
 		context = RequestContext(request)
 		cur_user = User.objects.get(username=request.user)
 		cur_pro = UserProfile.objects.get(user=cur_user)
