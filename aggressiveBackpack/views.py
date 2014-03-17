@@ -7,6 +7,7 @@ from aggressiveBackpack.models import Project, User, UserProfile, List, Task
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.core import serializers
 
 
 def index(request):
@@ -307,3 +308,10 @@ def delete_project(request, project_name_url):
 	to_delete.delete()
 	deleted=True
 	return render_to_response('/aggressiveBackpack/dashboard.html/', {'deleted':deleted}, context)
+	
+def getUsers(request):
+    context = RequestContext(request)
+    if request.method == 'GET':
+        data = User.objects.all()
+        data = serializers.serialize("json", data)
+        return HttpResponse(data,"application/json")

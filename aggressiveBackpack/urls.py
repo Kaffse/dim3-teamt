@@ -12,4 +12,5 @@ urlpatterns = patterns('',
                        url(r'^new_project/', views.new_project, name='new_project'),
                        url(r'^project/(?P<project_name_url>\w+)/$', views.project, name='project'),
                        url(r'^user/', views.user, name='user'),
+					   url(r'^getUsers/', views.getUsers, name='getUsers'),
 )
