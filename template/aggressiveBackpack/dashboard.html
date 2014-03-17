@@ -7,18 +7,27 @@
   
 <script>
   
-var users = []
 
-$.getJSON(
-		"/webapp/getUsers", 
-		
-		function(data){
-			for(var i=0;i<data.length;i++){
+$(function() {
+    
+	var users = []
+
+	$.getJSON(
+			"/aggressiveBackpack/getUsers/", 
 			
-				users.push(data[i].fields.username);
-			}
-			
-});
+			function(data){
+				for(var i=0;i<data.length;i++){
+				
+					users.push(data[i].fields.username);
+				}
+				
+	});
+	
+	
+    $( "#tags" ).autocomplete({
+      source: users
+    });
+  });
   
 </script>
   
@@ -30,6 +39,10 @@ $.getJSON(
 
   <!-- Links to all of user's projects -->
   <div class="col-md-8">
+  
+  <label for="tags">Tags: </label>
+  <input id="tags">
+  
     {% block list_block %}
         {% if userprojects %}
 		
