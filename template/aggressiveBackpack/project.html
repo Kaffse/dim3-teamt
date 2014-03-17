@@ -12,7 +12,7 @@
 {% block body_block %}
   <!-- Page header -->
   <div>
-    <div class='col-lg-9'>
+    <div class='col-sm-9'>
       <div class='well'>
         <ul class="breadcrumb">
           <li><a href="aggressiveBackpack/user">{{ project.owner }}</a></li>
@@ -131,11 +131,11 @@
     Populates from Django's context with lists and tasks.
     Not decided if it will be a scrollable element (horizontally) or paginated.
     -->
-<div class="col-lg-12">
+<div class="col-sm-12">
   <h2>Lists</h2>
     {% if lists %}
       {% for list in lists %}
-        <div class="col-lg-3">
+        <div class="col-sm-3">
           <div class="panel panel-default">
             <div style="background-color:{{ list.colour }}" class="panel-heading">{{ list.name }}</div>
             <div class="panel-body">
