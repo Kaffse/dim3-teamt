@@ -10,17 +10,17 @@
   </div>
 
   <!-- Links to all of user's projects -->
-  <div class="col-md-8">
+  <div class="col-sm-8">
     {% block list_block %}
         {% if userprojects %}
-		
-		
-		
-		
+
+
+
+
 		<table>
 <tr valign="top">
   <td width = "500">
-  
+
  <h1>Projects</h1>
           <div class="list-group">
             {% for project in userprojects %}
@@ -38,13 +38,13 @@
 
             {% endfor %}
           </div>
-  
+
   </td>
-  
+
   <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-  
+
     <td>
-  
+
  <h1>All projects</h1>
           <div class="list-group">
             {% for project in allprojects %}
@@ -62,12 +62,12 @@
 
             {% endfor %}
           </div>
-  
+
   </td>
 </tr>
 </table>
-		
-		
+
+
 
       {% else %}
           <h1>You appear to have no projects</h1>
@@ -91,7 +91,7 @@
   </div>
 
 <!-- Following Panel -->
-  <div class="col-md-4">
+  <div class="col-sm-4">
     <h1>Following</h1>
     <div class="well">
       {% block project_details_block %}
