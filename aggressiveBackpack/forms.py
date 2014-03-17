@@ -26,7 +26,7 @@ class NewProjectForm(forms.ModelForm):
 class NewListForm(forms.ModelForm):
     class Meta:
         model = List
-        fields = ('project', 'name', 'tasks', 'colour')
+        fields = ('project', 'name', 'colour')
 
 class NewTaskForm(forms.ModelForm):
     class Meta:

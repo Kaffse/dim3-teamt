@@ -37,7 +37,7 @@ class List(models.Model):
     #Many lists belong to one project
     project = models.ForeignKey(Project, related_name='project_relation')
     name = models.CharField(max_length=128)
-    tasks = models.ManyToManyField('Task', related_name='tasks_relation', blank=True, null=True)
+    #tasks = models.ManyToManyField('Task', related_name='tasks_relation', blank=True, null=True)
     colour = models.CharField(max_length=10, blank=True)
 
     def __unicode__(self):
@@ -47,7 +47,7 @@ class List(models.Model):
 #NOTE! - Abstracting the tags (category, progress and priority) to project level.
 class Task(models.Model):
     #Many tasks belong to one list
-    list = models.ForeignKey(List, related_name='owning_list_relation')
+    list = models.ForeignKey('List', related_name='owning_list_relation')
     project = models.ForeignKey(Project, related_name='owning_project_relation')
     #Standard title & description
     title = models.CharField(max_length=100)
