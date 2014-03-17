@@ -23,7 +23,7 @@ class UserProfile(models.Model):
 class Project(models.Model):
     owner = models.ForeignKey(UserProfile, related_name='owner_relation')
     name = models.CharField(max_length=128)
-    description = models.CharField(max_length=300)
+    description = models.TextField('Description' blank=True)
     picture = models.ImageField(upload_to='project_images', blank=True)
     website = models.URLField(blank=True)
     team_members = models.ManyToManyField('UserProfile', blank=True, related_name='team_members_relation')
@@ -31,6 +31,7 @@ class Project(models.Model):
 
     def __unicode__(self):
         return self.name
+
 
 
 class List(models.Model):
@@ -49,9 +50,8 @@ class Task(models.Model):
     #Many tasks belong to one list
     list = models.ForeignKey('List', related_name='owning_list_relation')
     project = models.ForeignKey(Project, related_name='owning_project_relation')
-    #Standard title & description
     title = models.CharField(max_length=100)
-    description = models.CharField(max_length=1000, blank=True)
+    description = models.TextField( blank=True, null=True)
     tags = TaggableManager(blank=True)
 
     def __unicode__(self):
