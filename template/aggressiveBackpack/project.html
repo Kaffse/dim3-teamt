@@ -23,21 +23,6 @@
 
   </div>
 
-  <!-- View Task dialog -->
-  <div id='view-task-dialog' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <h4 class="modal-title">Task title here</h4>
-        </div>
-        <div class="modal-body">
-          Details will be shown here once I figure out how to make them all display
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- New list dialog -->
   <div id='new-list-modal' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
   <div class="modal-dialog">
@@ -102,7 +87,7 @@
                 <input class="form-control input-lg" type="hidden" name='project' id="inputDefault" value="{{ project.id }}">
               </div>
 
-              <!-- Dropdown for choosing which list to make new task in. -->
+              <!-- List pass on using jQuery -->
               <div class="form-group">
                 <input class="form-control input-lg" type="hidden" name='list' id="list-id" value="">
 
@@ -153,7 +138,26 @@
                 {% for task in tasks %}
                   {% if task.list = list %}
                     {% if task.list = list %}
-                      <button type="button" data-toggle="modal" data-target="#view-task-dialog" id={{ task.id }} class="btn btn-default btn-lg btn-block">{{ task.title }}</button>
+                      <!-- Bit of a dirty workaround to make the jQuery pass variable thing work so don't use this class of button anywhere else.-->
+                      <button type="button" data-toggle="modal" data-target="#{{ task.id }}" class="btn btn-default btn-lg btn-block">{{ task.title }}</button>
+
+                      <!-- View Task dialog for each specific task
+                          Completely the quick and dirty way to do it but for
+                          now it will do. -->
+                      <div id='{{ task.id }}' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                              <h4 class="modal-title">{{ task.title }}</h4>
+                            </div>
+                            <div class="modal-body">
+                              Details will be shown here once I figure out how to make them all display
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
                     {% endif %}
                   {% endif %}
                 {% endfor %}
