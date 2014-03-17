@@ -1,5 +1,4 @@
-var container = documnet.querySelector('#list-container');
-var msnry = new Masonry(container, {
-  columnWidth: 200,
-  itemSelector: 'panel panel-default'
+$(document).on("click", ".add-task-button", function () {
+     var myBookId = $(this).data('current-list');
+    $("#list-id").val(myBookId);
 });
