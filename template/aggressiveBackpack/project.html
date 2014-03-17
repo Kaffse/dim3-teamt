@@ -99,12 +99,13 @@
 
               <!-- Title -->
               <div class="form-group">
-                <textarea class="form-control" name='title' id="inputDefault" placeholder='Title'></textarea>
+                <input class="form-control" name='title' id="inputDefault" placeholder='Title'></textarea>
               </div>
 
               <!-- Description -->
               <div class="form-group">
-                <input type="text" class="form-control" name='description' id="textArea" placeholder='Description'>
+                <textarea class="form-control" rows="3" id="textArea" name='description' placeholder='Description'></textarea>
+                <span class="help-block">Markdown is supported! See <a href='http://bit.ly/1mds0g7'>this cheatsheet!</a></span>
               </div>
 
               <!-- Tags -->
@@ -153,12 +154,11 @@
                           <div class="modal-content">
                             <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                              <h4 class="modal-title">{{ task.title }}</h4>
+                              <h3 class="modal-title">{{ task.title }}</h3>
                             </div>
                             <div class="modal-body">
-                              <p><b>Description: </b>{{ task.description }}</p><br>
-                              <p>
-                                <b>Tags:</b><br>
+                              <p class="text-info">Description:</p> {{ task.description }}<br>
+                              <p class="text-info">Tags: </p>
                                 {% if task.tags %}
                                   <ul>
                                     <li>Tags here</li>
