@@ -7,6 +7,7 @@ from aggressiveBackpack.models import Project, User, UserProfile, List, Task
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.core import serializers
 
 
 def index(request):
