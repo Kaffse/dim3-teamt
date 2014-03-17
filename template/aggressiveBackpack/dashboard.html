@@ -43,14 +43,18 @@
   
   <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
   
-    <td>
-  
- <h1>All projects</h1>
+    <td width="250">
+ <h3>Friends projects: </h3>
+ 
+   {% if friendsprojects %}
+   
           <div class="list-group">
-            {% for project in allprojects %}
+            {% for project in friendsprojects %}
             <div class="panel panel-default">
               <div class="panel-body">
                 <h4>
+				
+				{{ project.owner }} <br><br>
                   <a href="/aggressiveBackpack/project/{{ project.url }}" class="list-group-item active">
                     {{ project.name }}
                   </a>
@@ -62,10 +66,17 @@
 
             {% endfor %}
           </div>
+		  
+		  {% else %}
+		  <p>You appear to have no friends or they have not created any projects.</p>
+		  
+		  {% endif %}
   
   </td>
 </tr>
 </table>
+
+
 		
 		
 
