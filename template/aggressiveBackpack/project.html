@@ -161,7 +161,9 @@
                               <p class="text-info">Tags: </p>
                                 {% if task.tags %}
                                   <ul>
-                                    <li>Tags here</li>
+                                    {% for tag in task.tags.all %}
+                                    <li>{{ tag.name }}</li>
+                                    {% endfor %}
                                   </ul>
                                 {% else %}
                                 Add tags to view them here.

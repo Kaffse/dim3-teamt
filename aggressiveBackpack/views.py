@@ -308,7 +308,7 @@ def delete_project(request, project_name_url):
 	to_delete.delete()
 	deleted=True
 	return render_to_response('/aggressiveBackpack/dashboard.html/', {'deleted':deleted}, context)
-	
+
 def getUsers(request):
     context = RequestContext(request)
     if request.method == 'GET':
