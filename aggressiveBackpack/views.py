@@ -277,8 +277,13 @@ def new_project(request):
 		else:
 			new_project_form = NewProjectForm()
 
+		#If successfully registered then return to index
+		if (new_project_created == True):
+			return dashboard(request)
+
 		context_dict['new_project_form'] = new_project_form
 		context_dict['new_project_created'] = new_project_created
+
 		# Render the template depending on the context.
 		return render_to_response(
 		'aggressiveBackpack/new_project.html', context_dict, context)
