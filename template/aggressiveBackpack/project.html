@@ -1,0 +1,196 @@
+{% extends 'aggressiveBackpack/base.html' %}
+
+{% block title %}Project - AB{% endblock %}
+
+{% block extra_scripts %}
+<script src="/static/js/custom/project-page.js"></script>
+<script src="/static/js/masonry.pkgd.min.js"></script>
+<link href='/static/css/custom/project-page.css' rel='stylesheet' type='text/css'>
+
+{% endblock %}
+
+{% block body_block %}
+  <!-- Page header -->
+  <div>
+    <div class='col-sm-9'>
+      <div class='well'>
+        <ul class="breadcrumb">
+          <li><a href="aggressiveBackpack/user">{{ project.owner }}</a></li>
+          <li class="active">{{ project.name }}</li>
+        </ul>
+        <p><i>{{ project.description}}</i></p>
+      </div>
+    </div>
+      <!-- List creation button -->
+      <button id='new-list-button' data-toggle="modal" data-target="#new-list-modal" class="btn btn-primary btn-lg">New List</button>
+    </div>
+
+  </div>
+
+  <!-- New list dialog -->
+  <div id='new-list-modal' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">New List</h4>
+      </div>
+      <div class="modal-body">
+        <!-- New List Form -->
+        <form class="form-horizontal" id="new_list_form" method="post" action="/aggressiveBackpack/project/{{ projectURL }}/" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset>
+              <!-- Project Name -->
+              <div class="form-group">
+                <input class="form-control input-lg" type="hidden" name='project' id="inputDefault" value='{{ project.id }}'>
+              </div>
+
+              <!-- Tasks -->
+              <div class="form-group">
+                <input type="hidden" class="form-control" name='tasks' id="inputDefault">
+              </div>
+
+              <!-- List name -->
+              <div class="form-group">
+                <input class="form-control" name='name' id="inputDefault" placeholder='List Name'></input>
+              </div>
+
+              <!-- Colour -->
+              <div class="form-group">
+                <p>Give your list a colour</p>
+                <input type="color" name='colour' value="#fffff" placeholder='Colours!'>
+              </div>
+        </div>
+      <div class="modal-footer">
+        <!-- Submit & Cancel button -->
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </div>
+    </fieldset>
+    </form>
+    </div>
+  </div>
+</div>
+
+<!-- New task Modal -->
+<div class="modal fade" id="new-task-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Create a new task</h4>
+      </div>
+      <div class="modal-body">
+        <!-- New Task Form -->
+        <form class="form-horizontal" id="new_task_form" method="post" action="/aggressiveBackpack/project/{{ projectURL }}/" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset>
+              <!-- Parent project Name -->
+              <div class="form-group">
+                <input class="form-control input-lg" type="hidden" name='project' id="inputDefault" value="{{ project.id }}">
+              </div>
+
+              <!-- List pass on using jQuery -->
+              <div class="form-group">
+                <input class="form-control input-lg" type="hidden" name='list' id="list-id" value="">
+
+              </div>
+
+              <!-- Title -->
+              <div class="form-group">
+                <input class="form-control" name='title' id="inputDefault" placeholder='Title'></input>
+              </div>
+
+              <!-- Description -->
+              <div class="form-group">
+                <textarea class="form-control" rows="3" id="textArea" name='description' placeholder='Description (required!)'></textarea>
+                <span class="help-block">Markdown is supported! See <a href='http://bit.ly/1mds0g7'>this cheatsheet!</a></span>
+              </div>
+
+              <!-- Tags -->
+              <div class="form-group">
+                <input type="text" class="form-control" name='tags' id="inputDefault" placeholder='Assign your task tags here'>
+                <span class="help-block">Separated by commas.</span>
+              </div>
+
+
+        </div>
+      <div class="modal-footer">
+        <!-- Submit & Cancel button -->
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </div>
+    </fieldset>
+    </form>
+    </div>
+  </div>
+</div>
+
+<!--Main list view
+    Populates from Django's context with lists and tasks.
+    Not decided if it will be a scrollable element (horizontally) or paginated.
+    -->
+<div class="col-sm-12">
+    {% if lists %}
+      {% for list in lists %}
+        <div class="col-sm-3">
+          <div class="panel panel-default">
+            <div style="background-color:{{ list.colour }}" class="panel-heading">{{ list.name }}</div>
+            <div class="panel-body">
+              {% if tasks %}
+                {% for task in tasks %}
+                  {% if task.list = list %}
+                    {% if task.list = list %}
+                      <!-- Bit of a dirty workaround to make the jQuery pass variable thing work so don't use this class of button anywhere else.-->
+                      <button type="button" data-toggle="modal" data-target="#{{ task.id }}" class="btn btn-default btn-lg btn-block">{{ task.title }}</button>
+
+                      <!-- View Task dialog for each specific task
+                          Completely the quick and dirty way to do it but for
+                          now it will do. -->
+                      <div id='{{ task.id }}' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                              <h3 class="modal-title">{{ task.title }}</h3>
+                            </div>
+                            <div class="modal-body">
+                              <p class="text-info">Description:</p> {{ task.description }}<br>
+                              <p class="text-info">Tags: </p>
+                                {% if task.tags %}
+                                  <ul>
+                                    {% for tag in task.tags.all %}
+                                    <li>{{ tag.name }}</li>
+                                    {% endfor %}
+                                  </ul>
+                                {% else %}
+                                Add tags to view them here.
+                                {% endif %}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              {% else %}
+                <p>Time to make your first task</p>
+              {% endif %}
+            </div>
+            <div class="panel-footer">
+              <!-- New task link to open modal -->
+              <a href="" data-toggle="modal" data-target="#new-task-modal" class="add-task-button" data-current-list="{{ list.id }}"><i class="fa fa-plus"></i> New Task</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h1>There are no lists for your project yet.</h1>
+      <p>Hit that button up top to make your first one!</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #Team T DIM 3 Project
+=======
+#Team T Distributed Information Management 3 Project
+>>>>>>> devel
 ##Aggressive Backpack
 
 Tasked to create a collaborative system to sort, prioritise and organise requirements ala Trello. To be made in Django.
@@ -6,12 +10,17 @@ Tasked to create a collaborative system to sort, prioritise and organise require
 
 Link to project's presentation:https://docs.google.com/presentation/d/17wDcwCy9t_2nMox4KuVBKrv8DJ6ueVUaXi3OrerJYH4/edit?usp=sharing
 
+<<<<<<< HEAD
 Team Members: Alastair Weir (110682w), Keir Smith, Peter Yordanov, Gordon Adam, Georgi Dimitrov
+=======
+Team Members: Alastair Weir (110682w), Keir Smith, Peter Yordanov (1103620y), Gordon Adam, Georgi Dimitrov
+>>>>>>> devel
 
 
 Installation instructions (UNIX)
 
 1. Clone this repo
+<<<<<<< HEAD
 2. Install mysql mysql-server mysql-python
 3. pip install south
 4. mysql -u root -p
@@ -31,3 +40,10 @@ Installation instructions (Windows)
 5. Start services > Create dim3 database in phpMyAdmin
 6. python manage.py syncdb
 7. python manage.py runserver
+=======
+2. $ sudo apt-get install libmysqlclient-dev & python-dev
+3. $ sudo pip install -r requriements.txt
+4. $ ./manage.py syncdb
+5. $ ./manage.py migrate
+6. $ ./manage.py runserver
+>>>>>>> devel

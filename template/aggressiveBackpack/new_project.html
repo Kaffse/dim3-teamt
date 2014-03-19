@@ -1,0 +1,50 @@
+{% extends 'aggressiveBackpack/base.html' %}
+
+{% block title %}New Project - AB{% endblock %}
+
+{% block body_block %}
+<!-- Page header -->
+<div class='page-header'>
+  <h1 id='type'>Create a new project!</h1>
+</div>
+
+<div class='col-md-8'>
+  <form class="form-horizontal" id="new_project_form" method="post" action="/aggressiveBackpack/new_project/" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset>
+        <!-- User name-->
+          <div class="form-group">
+            <input class="form-control" id="inputDefault" name='owner' type="hidden" value="{{ UserProfile.id }}">
+          </div>
+        <!-- Project Name -->
+        <div class="form-group">
+          <input class="form-control input-lg" type="text" name='name' id="inputLarge" placeholder='Project Name'>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+          <textarea class="form-control" rows="3" name='description' id="textArea" placeholder='Description'></textarea>
+          <span class="help-block">Markdown is supported! See <a href='http://bit.ly/1mds0g7'>this cheatsheet!</a></span>
+        </div>
+
+        <!-- Tags -->
+        <div class="form-group">
+          <input type="text" class="form-control" name='tags' id="inputDefault" placeholder='Assign your project tags here.'>
+          <span class="help-block">Separated by commas.</span>
+        </div>
+
+        <!-- Website -->
+        <div class="form-group">
+          <input type="text" class="form-control" name='website' id="inputDefault" placeholder='Got a website for that project?'>
+        </div>
+
+        <!-- Submit & Cancel button -->
+        <div class="form-group">
+          <a href='/aggressiveBackpack/'><button class="btn btn-default">Cancel</button></a>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </fieldset>
+  </form>
+</div>
+
+{% endblock %}

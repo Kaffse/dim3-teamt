@@ -1,0 +1,16 @@
+Hey Nerds,
+
+Using virtual enviroments is easy!
+
+1. cd into dim3
+2. source venv/bin/activate
+3. You can now pip install <package> and such without requiring sudo
+4. You are now using python locally and can do cool things.
+4.5. If this is the first time running the venv on your machine remember to run $pip install -r requirements.txt
+5. Make sure you use "deactivate" before you leave the directory
+
+Done!
+
+
+Notes:
+* If you pip install a new dependency you have to $pip freeze -r requirements.txt and alert the rest of the team to update their local venv.
