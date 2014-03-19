@@ -208,9 +208,9 @@ def user_login(request):
 				# Is the account active? It could have been disabled.
 				if user.is_active:
 					# If the account is valid and active, we can log the user in.
-					# We'll send the user back to the homepage.
+					# We'll send the user back to their dashboard.
 					login(request, user)
-					return HttpResponseRedirect('/aggressiveBackpack/')
+					return HttpResponseRedirect('/aggressiveBackpack/dashboard')
 				else:
 					# An inactive account was used - no logging in!
 					return HttpResponse("Your aggressiveBackpack account is disabled.")
